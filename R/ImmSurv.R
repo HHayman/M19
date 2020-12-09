@@ -2,7 +2,7 @@
 
 
 #' @export
-#' This function plots two variables on a scatter plot and adds context using survival time.
+#' This function plots two variables on a scatter plot and contextualises the plot using survival time.
 
 
 #Function
@@ -64,7 +64,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1",
   xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
   yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
   Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
-  legend(1, 95, legend=c("Q1", "Q2", "Q3"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
+  #legend(1, 95, legend=c("Q1", "Q2", "Q3"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
   plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
 
   return(plot)
