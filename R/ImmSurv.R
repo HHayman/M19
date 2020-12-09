@@ -6,7 +6,7 @@
 
 
 #Function
-ImmSurv <- function(Data, ID = 'ID', Status = 'Status', Variable1 = 'Variable1', Variable1Unit = 'Variable1Unit', Variable2 = 'Variable2', Variable2Unit = 'Variable2Unit', Survival = 'Survival', Stage = 'Stage') {
+ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1", Variable1Unit = "Variable1Unit", Variable2 = "Variable2", Variable2Unit = "Variable2Unit", Survival = "Survival", Stage = "Stage") {
 
   names(Data)[1] <- ID
   names(Data)[2] <- Status
@@ -56,18 +56,6 @@ ImmSurv <- function(Data, ID = 'ID', Status = 'Status', Variable1 = 'Variable1',
   Data$Colour[Data$Survival < SurvQ[1]] = "#CC3232"
   Data$Colour[Data$Survival >= SurvQ[1] & Data$Survival < SurvQ[2]] = "#E7B416"
   Data$Colour[Data$Survival >= SurvQ[2]] = "#2DC937"
-
-
-
-  ##Mean +/- SD
-  #Data$Colour[Data$Survival < MeanSurvival - SdSurvival] = "#CC3232"
-  #Data$Colour[Data$Survival >= MeanSurvival - SdSurvival & Data$Survival <= MeanSurvival + SdSurvival] = "#E7B416"
-  #Data$Colour[Data$Survival > MeanSurvival + SdSurvival] = "#2DC937"
-
-
-  ##Mean
-  #Data$Colour[Data$Survival <= MeanSurvival] = "#6BAED6"
-  #Data$Colour[Data$Survival > MeanSurvival] = "#08519C"
 
 
 
