@@ -10,26 +10,26 @@ ImmSurv <- function(Data, ID = 'ID', Status = 'Status', Survival = 'Survival', S
 
 
   #Selects data based on chosen survival metric
-  Data <- Data[which(Data$Status=='1'),]
+  Data <- Data[which(Data[Status] == '1'),]
 
   #Adds a column for determining colour
   Data$Colour <- "Colour"
 
   #Removal of variable outliers
-  V1Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = FALSE)
-  V1IQR <- IQR(Data$Variable1)
-  V2Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = FALSE)
-  V2IQR <- IQR(Data$Variable1)
-  Data <- Data[which(Data$Variable1 > (V1Q[1] - 1.5*V1IQR) & Data$Variable1 < (V1Q[2]+1.5*V1IQR)),]
-  Data <- Data[which(Data$Variable1 > (V2Q[1] - 1.5*V2IQR) & Data$Variable1 < (V2Q[2]+1.5*V2IQR)),]
+  V1Q <- quantile(Data[Variable1], probs=c(.25, .75), na.rm = FALSE)
+  V1IQR <- IQR(Data[Variable1])
+  V2Q <- quantile(Data[Variable1], probs=c(.25, .75), na.rm = FALSE)
+  V2IQR <- IQR(Data[Variable1])
+  Data <- Data[which(Data[Variable1] > (V1Q[1] - 1.5*V1IQR) & Data[Variable1] < (V1Q[2]+1.5*V1IQR)),]
+  Data <- Data[which(Data[Variable1] > (V2Q[1] - 1.5*V2IQR) & Data[Variable1] < (V2Q[2]+1.5*V2IQR)),]
 
   #Determination of survival descriptives
-  SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = FALSE)
-  SurvIQR <- IQR(Data$Survival)
-  MaxSurvival <- max(Data$Survival)
-  MinSurvival <- min(Data$Survival)
-  MeanSurvival <- mean(Data$Survival)
-  SdSurvival <- sd(Data$Survival)
+  SurvQ <- quantile(Data[Survival], probs=c(.25, .75), na.rm = FALSE)
+  SurvIQR <- IQR(Data[Survival])
+  MaxSurvival <- max(Data[Survival])
+  MinSurvival <- min(Data[Survival])
+  MeanSurvival <- mean(Data[Survival])
+  SdSurvival <- sd(Data[Survival])
 
 
   #determination of variable descriptives
@@ -37,9 +37,9 @@ ImmSurv <- function(Data, ID = 'ID', Status = 'Status', Survival = 'Survival', S
     x2<-x*10^Decimals
     ceiling(x2)/10^Decimals
   }
-  MaxVariable1 = max(Data$Variable1)
+  MaxVariable1 = max(Data[Variable1])
   MaxVariable1 <- customCeiling(MaxVariable1)
-  MaxVariable2 = max(Data$Variable2)
+  MaxVariable2 = max(Data[Variable2])
   MaxVariable2 <- customCeiling(MaxVariable2)
   AxisMax <- max(MaxVariable1, MaxVariable2)
 
@@ -47,21 +47,9 @@ ImmSurv <- function(Data, ID = 'ID', Status = 'Status', Survival = 'Survival', S
 
 
   #Quartiles
-  Data$Colour[Data$Survival < SurvQ[1]] = "#CC3232"
-  Data$Colour[Data$Survival >= SurvQ[1] & Data$Survival < SurvQ[2]] = "#E7B416"
-  Data$Colour[Data$Survival >= SurvQ[2]] = "#2DC937"
-
-
-
-  ##Mean +/- SD
-  #Data$Colour[Data$Survival < MeanSurvival - SdSurvival] = "#CC3232"
-  #Data$Colour[Data$Survival >= MeanSurvival - SdSurvival & Data$Survival <= MeanSurvival + SdSurvival] = "#E7B416"
-  #Data$Colour[Data$Survival > MeanSurvival + SdSurvival] = "#2DC937"
-
-
-  ##Mean
-  #Data$Colour[Data$Survival <= MeanSurvival] = "#6BAED6"
-  #Data$Colour[Data$Survival > MeanSurvival] = "#08519C"
+  Data$Colour[Data[Survival] < SurvQ[1]] = "#CC3232"
+  Data$Colour[Data[Survival] >= SurvQ[1] & Data[Survival] < SurvQ[2]] = "#E7B416"
+  Data$Colour[Data[Survival] >= SurvQ[2]] = "#2DC937"
 
 
 
