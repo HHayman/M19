@@ -18,9 +18,8 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1",
   #Selects data based on chosen survival metric
   Data <- Data[which(Data$Status=='1'),]
 
-  #Adds columns for determining colour and plot size
+  #Adds a column for determining colour
   Data$Colour <- "Colour"
-  Data$Plotsize <- "Plotsize"
 
   #Removal of variable outliers
   V1Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = FALSE)
@@ -60,20 +59,13 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1",
 
 
 
-  #PlotSize Determination
-  Data$Plotsize[Data$Stage == 1] = "0.5"
-  Data$Plotsize[Data$Stage == 2] = "1.0"
-  Data$Plotsize[Data$Stage == 3] = "1.5"
-  Data$Plotsize[Data$Stage == 4] = "2.0"
-
-
 
   #Plots
   xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
   yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
   Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
   #legend(1, 95, legend=c("Q1", "Q2", "Q3"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
-  plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=Data$Plotsize, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
+  plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
 
   return(plot)
 }
