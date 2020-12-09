@@ -63,7 +63,9 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1",
   #Plots
   xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
   yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
-  plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), xlab = xAxis, ylab = yAxis, pch = 16)
+  Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
+  legend(1, 95, legend=c("Q1", "Q2", "Q3"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
+  plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
 
   return(plot)
 }
