@@ -8,12 +8,12 @@
 #Function
 ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1", Variable1Unit = "Variable1Unit", Variable2 = "Variable2", Variable2Unit = "Variable2Unit", Survival = "Survival", Stage = "Stage") {
 
-  names(Data)[1] <- ID
-  names(Data)[2] <- Status
-  names(Data)[3] <- Variable1
-  names(Data)[4] <- Variable2
-  names(Data)[5] <- Survival
-  names(Data)[6] <- Stage
+  names(Data)[1] <- "ID"
+  names(Data)[2] <- "Status"
+  names(Data)[3] <- "Variable1"
+  names(Data)[4] <- "Variable2"
+  names(Data)[5] <- "Survival"
+  names(Data)[6] <- "Stage"
 
   #Selects data based on chosen survival metric
   Data <- Data[which(Data$Status=='1'),]
