@@ -2,7 +2,7 @@
 
 
 #' @export
-#' This function plots two variables on a scatter plot and contextualises the plot using survival time.
+#' This function plots two variables on a scatter plot and adds context using survival time.
 
 
 #Function
