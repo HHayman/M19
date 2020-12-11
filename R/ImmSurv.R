@@ -17,15 +17,6 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1",
   names(Data)[names(Data) == Survival] <- "Survival"
   names(Data)[names(Data) == Stage] <- "Stage"
 
-  #names(Data)[names(Data) == "ID"] <- ID
-  #names(Data)[names(Data) == "Status"] <- Status
-  #names(Data)[names(Data) == "Variable1"] <- Variable1
-  #names(Data)[names(Data) == "Variable1Unit"] <- Variable1Unit
-  #names(Data)[names(Data) == "Variable2"] <- Variable2
-  #names(Data)[names(Data) == "Variable2Unit"] <- Variable2Unit
-  #names(Data)[names(Data) == "Survival"] <- Survival
-  #names(Data)[names(Data) == "Stage"] <- Stage
-
 
   #Selects data based on chosen survival metric
   Data <- Data[which(Data$Status=='1'),]
