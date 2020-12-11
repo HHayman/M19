@@ -4,7 +4,7 @@
 #' This function plots two variables on a scatter plot and contextualises the plot using survival time.
 
 #' @import devtools
-#' @import mafTools
+#' @import maftools
 #' @import ggpubr
 #' @import ggplot2
 #' @import survminer
