@@ -26,8 +26,9 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  #Splits survival status into CSS and OS status
+  #Reconfigure survival variables
   names(Data)[names(Data) == SurvivalStatus] <- "SurvivalStatus"
+  names(Data)[names(Data) == Survival] <- "Survival"
   Data$CSS <- ifelse(Data$SurvivalStatus == 1, c("1"), c("0"))
   Data$OS <- ifelse(Data$SurvivalStatus > 0, c("1"), c("0"))
 
@@ -35,7 +36,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
   #Determine cut off for cancer-specific survival
   if (CSS == "Yes") {
-    res.cut <- surv_cutpoint(Data, time = Survival, event = CSS, Variables)
+    res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
     plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
   }
 
@@ -43,7 +44,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
   #Determine cut off for overall survival
   if (OS == "Yes") {
-    res.cut <- surv_cutpoint(Data, time = Survival, event = OS, Variables)
+    res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
     plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
   }
 
@@ -56,6 +57,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   }
 
 
+  return(plot)
 
 
 
