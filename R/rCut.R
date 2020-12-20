@@ -20,9 +20,9 @@
 
 rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, ProgressionStatus, Variables)
 {
-  if (!all(Variables %in% colnames(data)))
+  if (!all(Variables %in% colnames(Data)))
     stop("Some variables are not found in the data: ",
-         paste(setdiff(Variables, colnames(data)), collapse = ", "))
+         paste(setdiff(Variables, colnames(Data)), collapse = ", "))
 
 
 
