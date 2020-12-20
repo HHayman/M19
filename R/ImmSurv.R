@@ -3,15 +3,9 @@
 
 #' This function plots two variables on a scatter plot and contextualises the plot using survival time.
 
-#' @import devtools
-#' @import maftools
 #' @import ggpubr
 #' @import ggplot2
-#' @import survminer
-#' @import tidyverse
-#' @import roxygen2
-#' @import survival
-#' @import maxstat
+
 
 #' @export
 

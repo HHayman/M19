@@ -2,20 +2,22 @@
 % Please edit documentation in R/ImmSurv.R
 \name{ImmSurv}
 \alias{ImmSurv}
-\title{ImmSurv}
+\title{ImmSurv
+This function plots two variables on a scatter plot and contextualises the plot using survival time.}
 \usage{
 ImmSurv(
   Data,
   ID = "ID",
   Status = "Status",
-  Survival = "Survival",
-  Stage = "Stage",
   Variable1 = "Variable1",
   Variable1Unit = "Variable1Unit",
   Variable2 = "Variable2",
-  Variable2Unit = "Variable2Unit"
+  Variable2Unit = "Variable2Unit",
+  Survival = "Survival",
+  Stage = "Stage"
 )
 }
 \description{
 ImmSurv
+This function plots two variables on a scatter plot and contextualises the plot using survival time.
 }
