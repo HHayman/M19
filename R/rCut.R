@@ -15,11 +15,11 @@
 
 
 #Function
-rCut <- function(Data, CSS = "No", OS = "No", PFS = "No", ID = "ID", Survival = "SurvivalTime", SurvivalStatus = "SurvivalStatus", Progression = "ProgressionTime", ProgressionStatus = "ProgresionStatus", Variables)
-{
+#rCut(Data, CSS = "Yes", OS = "No", PFS = "No", ID = "ID", Survival = "CSS_2017", SurvivalStatus = "a0cd1ncd2_2017", Variables = c("GD_Tumour_Stroma_Perc", "GD_Tumour_Epithelium_Perc", "GD_Healthy_LaminaPropria_Perc", "GD_Healthy_Epithelium_Perc"))
 
-  if (!all(c(ID, Survival, SurvivalStatus, Progression, ProgressionStatus) %in% colnames(data)))
-    stop("Specify correct column names containing ID, Survival, SurvivalStatus, Progression and ProgressionStatusvalues.")
+
+rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, ProgressionStatus, Variables)
+{
   if (!all(Variables %in% colnames(data)))
     stop("Some variables are not found in the data: ",
          paste(setdiff(variables, colnames(data)), collapse = ", "))
