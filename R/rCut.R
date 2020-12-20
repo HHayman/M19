@@ -28,8 +28,8 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
   #Splits survival status into CSS and OS status
   names(Data)[names(Data) == SurvivalStatus] <- "SurvivalStatus"
-  Data$CancerSpecificStatus <- ifelse(Data$SurvivalStatus == 1, c("1"), c("0"))
-  Data$OverallSpecificStatus <- ifelse(Data$SurvivalStatus > 0, c("1"), c("0"))
+  Data$CSS <- ifelse(Data$SurvivalStatus == 1, c("1"), c("0"))
+  Data$OS <- ifelse(Data$SurvivalStatus > 0, c("1"), c("0"))
 
 
 
