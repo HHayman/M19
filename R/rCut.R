@@ -18,10 +18,6 @@
 rCut <- function(Data, CSS = "No", OS = "No", PFS = "No", ID = "ID", Survival = "SurvivalTime", SurvivalStatus = "SurvivalStatus", Progression = "ProgressionTime", ProgressionStatus = "ProgresionStatus", Variables)
 {
 
-
-  if (!inherits(data, "data.frame"))
-    stop("data should be an object of class data.frame")
-  data <- as.data.frame(data)
   if (!all(c(ID, Survival, SurvivalStatus, Progression, ProgressionStatus) %in% colnames(data)))
     stop("Specify correct column names containing ID, Survival, SurvivalStatus, Progression and ProgressionStatusvalues.")
   if (!all(Variables %in% colnames(data)))
