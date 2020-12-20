@@ -31,6 +31,8 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   names(Data)[names(Data) == Survival] <- "Survival"
   Data$CSS <- ifelse(Data$SurvivalStatus == 1, c("1"), c("0"))
   Data$OS <- ifelse(Data$SurvivalStatus > 0, c("1"), c("0"))
+  as.numeric(Data$CSS)
+  as.numeric(Data$OS)
 
 
 
