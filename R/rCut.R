@@ -47,7 +47,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   #Determine cut off for overall survival
   if (OS == "Yes") {
     res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
-    plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    OS_Plots <- plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
   }
 
 
@@ -55,11 +55,17 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   #Determine cut off for progression-free survival
   if (PFS == "Yes") {
     res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
-    plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    PFS_Plots <- plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
   }
 
 
-  return(CSS_Plots)
+  Plots <- list(CSS_Plots, OS_Plots)
+
+  return(Plots)
+
+  #return(CSS_Plots)
+  #return(OS_Plots)
+  #return(PFS_Plots)
 
 
 
