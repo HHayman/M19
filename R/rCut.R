@@ -39,8 +39,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   #Determine cut off for cancer-specific survival
   if (CSS == "Yes") {
     res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-    plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
-    return(plot)
+    CSS_Plots <- plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
   }
 
 
@@ -58,6 +57,9 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
     plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
   }
+
+
+  return(CSS_Plots)
 
 
 
