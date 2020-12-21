@@ -71,7 +71,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   return(Plots)
 
   pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  print(Plots)
+  invisible(lapply(Plots, print))
   dev.off()
 
 
