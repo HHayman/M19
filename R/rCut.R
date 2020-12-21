@@ -36,9 +36,9 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  Title <- Enjoy your cut offs. Hail Wonder Woman!
+  Title <- "Enjoy your cut offs. Hail Wonder Woman!"
 
-    Plots <- list(Title)
+  Plots <- list(Title)
 
 
 
