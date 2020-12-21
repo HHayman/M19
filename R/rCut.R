@@ -46,7 +46,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   if (CSS == "Yes") {
     CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
     CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"))
-    Plots <- new_element(CSS_Plots)
+    Plots <- c(Plots, CSS_Plots)
   }
 
 
@@ -55,7 +55,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   if (OS == "Yes") {
     OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
     OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"))
-    Plots <- new_element(OS_Plots)
+    Plots <- c(Plots, OS_Plots)
   }
 
 
@@ -64,7 +64,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   if (PFS == "Yes") {
     PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
     PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"))
-    Plots <- new_element(PFS_Plots)
+    Plots <- c(Plots, PFS_Plots)
   }
 
 
