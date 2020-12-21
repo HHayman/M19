@@ -74,4 +74,9 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   Plots
   dev.off()
 
+
+  pdf("gridplots.pdf", onefile = TRUE)
+  do.call("grid.arrange", Plots)
+  dev.off()
+
 }
