@@ -36,37 +36,39 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
+  Title <- "Enjoy your cut offs. Hail Wonder Woman!"
+
+  Plots <- list(Title)
+
+
+
   #Determine cut off for cancer-specific survival
   if (CSS == "Yes") {
-    res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-    CSS_Plots <- plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+    CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    Plots <- new_element(CSS_Plots)
   }
 
 
 
   #Determine cut off for overall survival
   if (OS == "Yes") {
-    res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
-    OS_Plots <- plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
+    OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    Plots <- new_element(OS_Plots)
   }
 
 
 
   #Determine cut off for progression-free survival
   if (PFS == "Yes") {
-    res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
-    PFS_Plots <- plot(res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
+    PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"))
+    Plots <- new_element(PFS_Plots)
   }
 
 
-  Plots <- list(CSS_Plots, OS_Plots)
-
   return(Plots)
-
-  #return(CSS_Plots)
-  #return(OS_Plots)
-  #return(PFS_Plots)
-
 
 
 }
