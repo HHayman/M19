@@ -71,18 +71,16 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   return(Plots)
 
   pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  if (CSS == "Yes") {
-    CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
-    print(CSS_Plots)
-  }
-  if (OS == "Yes") {
-    OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival", font.main=2, cex.main=5)
-    print(OS_Plots)
-  }
-  if (PFS == "Yes") {
-    PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival", font.main=2, cex.main=5)
-    print(PFS_Plots)
-  }
+  print(Plots)
+  dev.off()
+
+  pdf("C:/Users/liamj/Desktop/R/Plots2.pdf")
+  CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
+  OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival", font.main=2, cex.main=5)
+  PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival", font.main=2, cex.main=5)
+  print(CSS_Plots)
+  print(OS_Plots)
+  print(PFS_Plots)
   dev.off()
 
 
