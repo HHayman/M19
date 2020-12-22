@@ -65,7 +65,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     Plots <- c(Plots, PFS_Plots)
   }
 
-
+  YourPlots <<- Plots
   return(Plots)
 
   pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
