@@ -71,8 +71,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   return(Plots)
 
   pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
-  print(CSS_Plots)
+  print(CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival")))
   dev.off()
 
   #pdf("C:/Users/liamj/Desktop/R/Plots2.pdf")
