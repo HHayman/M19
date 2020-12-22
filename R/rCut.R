@@ -15,8 +15,6 @@
 
 
 #Function
-#rCut(Data, CSS = "Yes", OS = "No", PFS = "No", ID = "ID", Survival = "CSS_2017", SurvivalStatus = "a0cd1ncd2_2017", Variables = c("GD_Tumour_Stroma_Perc", "GD_Tumour_Epithelium_Perc", "GD_Healthy_LaminaPropria_Perc", "GD_Healthy_Epithelium_Perc"))
-
 
 rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, ProgressionStatus, Variables)
 {
@@ -36,7 +34,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  Title <- "Enjoy your cut offs. Hail Wonder Woman!"
+  Title <- "Enjoy your cut offs."
 
   Plots <- list(Title)
 
@@ -71,17 +69,10 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   return(Plots)
 
   pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  print(CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival")))
+  CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+  CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
+  print(CSS_Plots)
   dev.off()
-
-  #pdf("C:/Users/liamj/Desktop/R/Plots2.pdf")
-  #CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
-  #OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival", font.main=2, cex.main=5)
-  #PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival", font.main=2, cex.main=5)
-  #print(CSS_Plots)
-  #print(OS_Plots)
-  #print(PFS_Plots)
-  #dev.off()
 
 
 }
