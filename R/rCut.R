@@ -46,6 +46,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
     CSS_Title <- "Cancer-specific survival cut offs;"
     Plots <- c(Plots, CSS_Title, CSS_Plots)
+    YourCSSPlots <<- CSS_Plots
   }
 
 
@@ -56,6 +57,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival", font.main=2, cex.main=5)
     OS_Title <- "Overall survival cut offs;"
     Plots <- c(Plots, OS_Title, OS_Plots)
+    YourOSPlots <<- OS_Plots
   }
 
 
@@ -66,17 +68,29 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival", font.main=2, cex.main=5)
     PFS_Title <- "Progression-free survival cut offs;"
     Plots <- c(Plots, PFS_Title, PFS_Plots)
+    YourPFSPlots <<- PFS_Plots
   }
 
-  YourPlots <<- Plots
+  YourPlots(All) <<- Plots
+
+
 
   return(Plots)
 
-  pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-  CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
-  print(CSS_Plots)
-  dev.off()
+  # pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
+  # CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+  # CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
+  #print(CSS_Plots)
+  #dev.off()
+
+
+  for(i in seq_along(Plots) ){
+    filename <- paste(names(Plots[i]),'-myFile.pdf', sep = "")
+    pdf(filename)
+    plot(Plots[i])
+    dev.off()
+  }
+
 
 
 }
