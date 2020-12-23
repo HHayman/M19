@@ -75,22 +75,4 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  return(Plots)
-
-  # pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  # CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-  # CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
-  #print(CSS_Plots)
-  #dev.off()
-
-
-  for(i in seq_along(Plots) ){
-    filename <- paste(names(Plots[i]),'-myFile.pdf', sep = "")
-    pdf(filename)
-    plot(Plots[i])
-    dev.off()
-  }
-
-
-
 }
