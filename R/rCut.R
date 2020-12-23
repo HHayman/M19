@@ -34,7 +34,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  Title <- "Enjoy your cut offs."
+  Title <- "Enjoy your cut offs. Hail Wonder Woman!"
 
   Plots <- list(Title)
 
@@ -44,7 +44,8 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   if (CSS == "Yes") {
     CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
     CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
-    Plots <- c(Plots, CSS_Plots)
+    CSS_Title <- "Cancer-specific survival cut offs;"
+    Plots <- c(Plots, CSS_Title, CSS_Plots)
   }
 
 
@@ -53,7 +54,8 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   if (OS == "Yes") {
     OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
     OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival", font.main=2, cex.main=5)
-    Plots <- c(Plots, OS_Plots)
+    OS_Title <- "Overall survival cut offs;"
+    Plots <- c(Plots, OS_Title, OS_Plots)
   }
 
 
@@ -62,16 +64,19 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   if (PFS == "Yes") {
     PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
     PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival", font.main=2, cex.main=5)
-    Plots <- c(Plots, PFS_Plots)
+    PFS_Title <- "Progression-free survival cut offs;"
+    Plots <- c(Plots, PFS_Title, PFS_Plots)
   }
 
   YourPlots <<- Plots
+
+  ggsave(filename="myPlot.pdf", plot=Plots)
+
+
   return(Plots)
 
   pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-  CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
-  print(CSS_Plots)
+  print(YourPlots)
   dev.off()
 
 
