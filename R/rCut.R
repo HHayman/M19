@@ -70,14 +70,12 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
   YourPlots <<- Plots
 
-  #ggsave(filename="myPlot.pdf", plot=Plots)
-  ggsave(plot=Plots, filename="myPlot.pdf")
-
-
   return(Plots)
 
   pdf("C:/Users/liamj/Desktop/R/Plots.pdf")
-  print(YourPlots)
+  CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+  CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main=list(font=2, cex=5, label="Cancer-Specific Survival"))
+  print(CSS_Plots)
   dev.off()
 
 
