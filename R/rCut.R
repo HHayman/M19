@@ -70,7 +70,8 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
   YourPlots <<- Plots
 
-  ggsave(filename="myPlot.pdf", plot=Plots)
+  #ggsave(filename="myPlot.pdf", plot=Plots)
+  ggsave(plot=Plots, filename="myPlot.pdf")
 
 
   return(Plots)
