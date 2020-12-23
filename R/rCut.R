@@ -71,7 +71,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     YourPFSPlots <<- PFS_Plots
   }
 
-  YourPlots(All) <<- Plots
+  YourPlotsAll <<- Plots
 
 
 
