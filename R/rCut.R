@@ -73,6 +73,8 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
   YourPlotsAll <<- Plots
 
-
+  pdf("C:/Users/liamj/Desktop/R/YourPlots.pdf")
+  print(YourPlotsAll)
+  dev.off()
 
 }
