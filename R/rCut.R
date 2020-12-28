@@ -44,7 +44,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
     CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
     CSS_Title <- "Cancer-specific survival cut offs;"
-    Plots <- c(Plots, CSS_Title, CSS_Plots)
+    Plots <- c(Plots, CSS_Plots)
     YourCSSPlots <<- CSS_Plots
   }
 
@@ -55,7 +55,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
     OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
     OS_Title <- "Overall survival cut offs;"
-    Plots <- c(Plots, OS_Title, OS_Plots)
+    Plots <- c(Plots, OS_Plots)
     YourOSPlots <<- OS_Plots
   }
 
@@ -66,7 +66,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
     PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
     PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
     PFS_Title <- "Progression-free survival cut offs;"
-    Plots <- c(Plots, PFS_Title, PFS_Plots)
+    Plots <- c(Plots, PFS_Plots)
     YourPFSPlots <<- PFS_Plots
   }
 
@@ -75,5 +75,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   pdf("C:/Users/liamj/Desktop/R/YourPlots.pdf")
   print(YourPlotsAll)
   dev.off()
+
+  message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in your R directory.")
 
 }
