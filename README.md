@@ -7,53 +7,62 @@
 
 <!-- badges: end -->
 
-The goal of M19 is to …
+Use this package to generate cut-offs using the maximal rank statistic
+method.
 
 ## Installation
 
-You can install the released version of M19 from
-[CRAN](https://CRAN.R-project.org) with:
+First install and load the ‘devtools’ package;
 
 ``` r
-install.packages("M19")
+install.packages("devtools")
+library(devtools)
 ```
 
-And the development version from [GitHub](https://github.com/) with:
+Next, you need to install the ‘M19’ package;
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("HHayman/M19")
+install_github("HHayman/M19")
 ```
 
-## Example
+## Preparing Data
 
-This is a basic example which shows you how to solve a common problem:
+You need to carry out any exclusions etc in your data set - include the
+minimum amount of data possible. Your final data should include the
+following columns (example); an identifier (TMA ID), survival time(s)
+(CSS\_Time, PFS\_Time), corresponding survival status (CSS\_status,
+PFS\_status), your variables (CD8\_Tumour, CD8\_Healthy).
+
+CSS/OS should be coded as 0 = alive, 1 = CD, 2 = NCD. The function will
+split it into CSS and OS for you. PFS should be coded as 0 = disease
+free, 1 = recurred.
+
+First, you need to read your data file. It should be a CSV file with no
+spaces in the column names, use ’\_’. To do this, use this code;
 
 ``` r
-library(M19)
-## basic example code
+Data <- read.csv(file.choose(), fileEncoding = 'UTF-8-BOM')
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+## Prroduce Cut-Offs
+
+Check your data file in R and if you’re happy with it, edit and use the
+code below to call the function;
+
+All variable names must match exactly.
+
+For CSS, OS and PFS, Use ‘Yes’ if you want that cut-off to be generated,
+and ‘No’ if you do not. It is case sensitive.
+
+For ‘Survival’, ‘SurvivalStatus’, ‘Progression’ and ‘ProgressionStatus’,
+replace the text within the quotation marks with your variable names. If
+you are not using PFS, delete the ‘Progression’ and ‘ProgressionStatus’
+arguments, and likewise for CSS/OS if you want neither, but keep it if
+you want one or the other.
+
+Replace ‘Variable1’ etc with your variables. There is no limit so just
+add/remove arguments as appropriate.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+rCut(Data, CSS = "Yes", OS = "Yes", PFS = "Yes", ID = "ID", Survival = "Survival", SurvivalStatus = "Survival_Status", Progression = "Progression", ProgressionStatus = "ProgressionStatus", Variables = c("Variable1", "Variable2", "Variable3", "Variable4"))
 ```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!

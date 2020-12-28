@@ -76,6 +76,6 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   print(YourPlotsAll)
   dev.off()
 
-  message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots)in your R directory.")
+  message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) in your R directory.")
 
 }
