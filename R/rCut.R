@@ -8,6 +8,7 @@
 #' @import maxstat
 #' @import survminer
 #' @import tidyverse
+#' @import readbitmap
 
 
 #' @export
@@ -34,7 +35,10 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  Title <- "Enjoy your cut offs. Hail Wonder Woman!"
+  fpath <- system.file('extdata/M19WW.jpg',package='M19')
+  Title <- load.image(fpath)
+
+
 
   Plots <- list(Title)
 
