@@ -35,7 +35,7 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  Title <- readJPEG(system.file('extdata/M19WW.jpg',package='M19'))
+  Title <- readJPEG('extdata/M19WW.jpg', package='M19')
 
 
 
