@@ -74,6 +74,10 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
   YourPlotsAll <<- Plots
 
   pdf("C:/Users/liamj/Desktop/R/YourPlots.pdf")
+  textplot(CSS_Title, halign = c("center"),
+           valign = c("center"), cex, fixed.width=TRUE,
+           cspace=1, lspace=1, mar=c(0, 0, 3, 0) + 0.1,
+           tab.width = 8, ...)
   print(YourPlotsAll)
   dev.off()
 
