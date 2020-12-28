@@ -8,7 +8,7 @@
 #' @import maxstat
 #' @import survminer
 #' @import tidyverse
-#' @import imager
+#' @import jpeg
 
 
 #' @export
