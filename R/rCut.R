@@ -9,6 +9,7 @@
 #' @import survminer
 #' @import tidyverse
 #' @import jpeg
+#' @import magick
 
 
 #' @export
@@ -35,7 +36,9 @@ rCut <- function(Data, CSS, OS, PFS, ID, Survival, SurvivalStatus, Progression, 
 
 
 
-  Title <- readJPEG('extdata/M19WW.jpg', package='M19')
+  #Title <- readJPEG('extdata/M19WW.jpg')
+
+  Title <- magick::image_read(system.file("extdata/M19WW.jpg", "M19"))
 
 
 
