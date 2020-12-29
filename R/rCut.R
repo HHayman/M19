@@ -35,15 +35,12 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
 
-
-  #Palette <- palette(c("#d70033", "#5596e6"))
-
   if (PlotPalette == "SPSS") {
-    Palette <- palette(c("#d70033", "#5596e6"))
+    palette(c("#d70033", "#5596e6"))
   }
 
   if (PlotPalette == "BW") {
-    Palette <- palette(c("#000000", "#FFFFFF"))
+    palette(c("#000000", "#FFFFFF"))
   }
 
 
@@ -89,8 +86,11 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   print(YourPlotsAll)
   dev.off()
 
-  return(Plots)
 
   message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) in your R directory.")
+
+
+  return(Plots)
+
 
 }
