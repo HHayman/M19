@@ -34,54 +34,83 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   Data$OS <- as.numeric(Data$OS)
 
 
-
-  Palette <- palette(c("#FFFF00", "#FFF000"))
-
-
-  if (PlotPalette == "SPSS") {
-    Palette <- palette(c("#d70033", "#5596e6"))
-  }
-
-  if (PlotPalette == "BW") {
-    Palette <- palette(c("#000000", "#FFFFFF"))
-  }
-
-
-
   Plots <- list()
 
 
 
-  #Determine cut off for cancer-specific survival
-  if (CSS == "Yes") {
-    CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-    CSS_Plots <- plot(CSS.res.cut, Variables, palette = Palette, main="Cancer-Specific Survival")
-    CSS_Title <- "Cancer-specific survival cut offs;"
-    Plots <- c(Plots, CSS_Plots)
-    YourCSSPlots <<- CSS_Plots
+  if (PlotPalette == "SPSS") {
+    #Determine cut off for cancer-specific survival
+    if (CSS == "Yes") {
+      CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+      CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
+      CSS_Title <- "Cancer-specific survival cut offs;"
+      Plots <- c(Plots, CSS_Plots)
+      YourCSSPlots <<- CSS_Plots
+    }
+
+
+
+    #Determine cut off for overall survival
+    if (OS == "Yes") {
+      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
+      OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
+      OS_Title <- "Overall survival cut offs;"
+      Plots <- c(Plots, OS_Plots)
+      YourOSPlots <<- OS_Plots
+    }
+
+
+
+    #Determine cut off for progression-free survival
+    if (PFS == "Yes") {
+      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
+      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
+      PFS_Title <- "Progression-free survival cut offs;"
+      Plots <- c(Plots, PFS_Plots)
+      YourPFSPlots <<- PFS_Plots
+    }
   }
 
 
 
-  #Determine cut off for overall survival
-  if (OS == "Yes") {
-    OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
-    OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
-    OS_Title <- "Overall survival cut offs;"
-    Plots <- c(Plots, OS_Plots)
-    YourOSPlots <<- OS_Plots
+
+
+
+
+  if (PlotPalette == "BW") {
+    #Determine cut off for cancer-specific survival
+    if (CSS == "Yes") {
+      CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+      CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
+      CSS_Title <- "Cancer-specific survival cut offs;"
+      Plots <- c(Plots, CSS_Plots)
+      YourCSSPlots <<- CSS_Plots
+    }
+
+
+
+    #Determine cut off for overall survival
+    if (OS == "Yes") {
+      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
+      OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
+      OS_Title <- "Overall survival cut offs;"
+      Plots <- c(Plots, OS_Plots)
+      YourOSPlots <<- OS_Plots
+    }
+
+
+
+    #Determine cut off for progression-free survival
+    if (PFS == "Yes") {
+      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
+      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
+      PFS_Title <- "Progression-free survival cut offs;"
+      Plots <- c(Plots, PFS_Plots)
+      YourPFSPlots <<- PFS_Plots
+    }
   }
 
 
-
-  #Determine cut off for progression-free survival
-  if (PFS == "Yes") {
-    PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
-    PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
-    PFS_Title <- "Progression-free survival cut offs;"
-    Plots <- c(Plots, PFS_Plots)
-    YourPFSPlots <<- PFS_Plots
-  }
 
   YourPlotsAll <<- Plots
 
