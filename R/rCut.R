@@ -35,12 +35,15 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
 
+
+  #Palette <- palette(c("#d70033", "#5596e6"))
+
   if (PlotPalette == "SPSS") {
-    palette(c("#d70033", "#5596e6"))
+    Palette <- palette(c("#d70033", "#5596e6"))
   }
 
   if (PlotPalette == "BW") {
-    palette(c("#000000", "#FFFFFF"))
+    Palette <- palette(c("#000000", "#FFFFFF"))
   }
 
 
