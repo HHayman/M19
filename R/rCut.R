@@ -17,7 +17,7 @@
 
 #Function
 
-rCut <- function(Data, CSS, OS, PFS, PlotColour, ID, Survival, SurvivalStatus, Progression, ProgressionStatus, Variables)
+rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalStatus, Progression, ProgressionStatus, Variables)
 {
   if (!all(Variables %in% colnames(Data)))
     stop("Some variables are not found in the data: ",
@@ -32,8 +32,16 @@ rCut <- function(Data, CSS, OS, PFS, PlotColour, ID, Survival, SurvivalStatus, P
   Data$OS <- ifelse(Data$SurvivalStatus > 0, c("1"), c("0"))
   Data$CSS <- as.numeric(Data$CSS)
   Data$OS <- as.numeric(Data$OS)
-  PaletteSPSS = c("#d70033", "#5596e6")
-  PaletteBW = c("#000000", "#FFFFFF")
+
+
+  PaletteSPSS = palette(c("#d70033", "#5596e6"))
+  PaletteBW = palette(c("#000000", "#FFFFFF"))
+  if (PlotPalette == "SPSS") {
+    Palette = PaletteSPSS
+  }
+  if (PlotPalette == "BW") {
+    Palette = PaletteBW
+  }
 
 
 
@@ -44,7 +52,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotColour, ID, Survival, SurvivalStatus, P
   #Determine cut off for cancer-specific survival
   if (CSS == "Yes") {
     CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-    CSS_Plots <- plot(CSS.res.cut, Variables, palette = PlotColour, main="Cancer-Specific Survival")
+    CSS_Plots <- plot(CSS.res.cut, Variables, palette = Palette, main="Cancer-Specific Survival")
     CSS_Title <- "Cancer-specific survival cut offs;"
     Plots <- c(Plots, CSS_Plots)
     YourCSSPlots <<- CSS_Plots
