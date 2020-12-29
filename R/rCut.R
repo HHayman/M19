@@ -35,12 +35,18 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
 
+  Palette <- palette(c("#FFFF00"))
+
+  PaletteSPSS <- palette(c("#d70033", "#5596e6"))
+  PaletteBW <- palette(c("#000000", "#FFFFFF"))
+
+
   if (PlotPalette == "SPSS") {
-    palette(c("#d70033", "#5596e6"))
+    Palette <- PaletteSPSS
   }
 
   if (PlotPalette == "BW") {
-    palette(c("#000000", "#FFFFFF"))
+    Palette <- PaletteBW
   }
 
 
@@ -52,7 +58,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   #Determine cut off for cancer-specific survival
   if (CSS == "Yes") {
     CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-    CSS_Plots <- plot(CSS.res.cut, Variables, main="Cancer-Specific Survival")
+    CSS_Plots <- plot(CSS.res.cut, Variables, palette = Palette main="Cancer-Specific Survival")
     CSS_Title <- "Cancer-specific survival cut offs;"
     Plots <- c(Plots, CSS_Plots)
     YourCSSPlots <<- CSS_Plots
@@ -82,15 +88,15 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   YourPlotsAll <<- Plots
 
-  pdf("YourPlots.pdf")
-  print(YourPlotsAll)
-  dev.off()
+  pdf("YourPlots.pdf");
+  print(YourPlotsAll);
+  dev.off();
 
 
   message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) in your R directory.")
 
 
-  return(Plots)
+  return(Plots);
 
 
 }
