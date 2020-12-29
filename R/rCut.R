@@ -77,11 +77,11 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
 
-  if (PlotPalette == "BW") {
+  if (PlotPalette == "Grayscale") {
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
       CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-      CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#FFFFFF"), main="Cancer-Specific Survival")
+      CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
       Plots <- c(Plots, CSS_Plots)
       YourCSSPlots <<- CSS_Plots
