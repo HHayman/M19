@@ -33,7 +33,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotColour, ID, Survival, SurvivalStatus, P
   Data$CSS <- as.numeric(Data$CSS)
   Data$OS <- as.numeric(Data$OS)
   PaletteSPSS = c("#d70033", "#5596e6")
-  PaletteB&W = c("#000000", "#FFFFFF")
+  PaletteBW = c("#000000", "#FFFFFF")
 
 
 
