@@ -34,6 +34,14 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   Data$OS <- as.numeric(Data$OS)
 
 
+  CurrentDirectory <- getwd()
+  TempDirectory <- paste("YourCutOffs", Sys.Date(), sep = "_")
+  dir.create(TempDirectory)
+  setwd(TempDirectory)
+
+
+
+
   Plots <- list()
 
   sink("waste.txt")
@@ -126,5 +134,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
   sink();
+
+  setwd(CurrentDirectory)
 
 }
