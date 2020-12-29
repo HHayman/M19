@@ -35,7 +35,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
   CurrentDirectory <- getwd()
-  TempDirectory <- paste("YourCutOffs", Sys.Date(), sep = "_")
+  TempDirectory <- paste("CutOffs")
   dir.create(TempDirectory)
   setwd(TempDirectory)
 
