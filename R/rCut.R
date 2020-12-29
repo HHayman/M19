@@ -35,7 +35,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
   CurrentDirectory <- getwd()
-  TempDirectory <- paste("YourCutOffs", Sys.Date(), sep = "_")
+  TempDirectory <- paste("YourCutOffs", Sys.Date(), Sys.time(), sep = "_")
   dir.create(TempDirectory)
   setwd(TempDirectory)
 
@@ -125,6 +125,12 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   pdf("YourPlots.pdf");
   print(YourPlotsAll);
   dev.off();
+
+
+  for (i in CSS_Plots) {
+    png(paste("CSS_",CSS_Plots[i],".png"))
+    dev.off()
+  }
 
 
   message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) in your R directory.")
