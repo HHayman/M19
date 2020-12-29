@@ -36,7 +36,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   Plots <- list()
 
-  sink("/dev/null")
+  sink("waste.txt")
 
   if (PlotPalette == "SPSS") {
     #Determine cut off for cancer-specific survival
