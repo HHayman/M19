@@ -36,7 +36,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   Plots <- list()
 
-
+  sink("/dev/null")
 
   if (PlotPalette == "SPSS") {
     #Determine cut off for cancer-specific survival
@@ -81,7 +81,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
       CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-      CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
+      CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#FFFFFF"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
       Plots <- c(Plots, CSS_Plots)
       YourCSSPlots <<- CSS_Plots
@@ -92,7 +92,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for overall survival
     if (OS == "Yes") {
       OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
-      OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
+      OS_Plots <- plot(OS.res.cut, Variables, palette = c("#000000", "#FFFFFF"), main="Overall Survival")
       OS_Title <- "Overall survival cut offs;"
       Plots <- c(Plots, OS_Plots)
       YourOSPlots <<- OS_Plots
@@ -103,7 +103,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for progression-free survival
     if (PFS == "Yes") {
       PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
-      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
+      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#000000", "#FFFFFF"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
       Plots <- c(Plots, PFS_Plots)
       YourPFSPlots <<- PFS_Plots
@@ -124,5 +124,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   return(Plots);
 
+
+  sink();
 
 }
