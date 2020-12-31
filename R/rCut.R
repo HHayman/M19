@@ -162,6 +162,6 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   sink();
 
-  setwd(CurrentDirectory)
+  on.exit(setwd(CurrentDirectory), add = TRUE)
 
 }
