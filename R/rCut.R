@@ -35,7 +35,23 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
   CurrentDirectory <- getwd()
-  TempDirectory <- paste("CutOffs", Sys.Date(), sep = '_')
+  StartDirectory <- paste("CutOffs", Sys.Date(), sep = '_')
+
+
+  int count = 1;
+
+  string fileNameOnly = Path.GetFileNameWithoutExtension(StartDirectory);
+  string extension = Path.GetExtension(StartDirectory);
+  string path = Path.GetDirectoryName(StartDirectory);
+  string TempDirectory = StartDirectory;
+
+  while(File.Exists(TempDirectory))
+  {
+    string TempDirectory = string.Format("{0}({1})", fileNameOnly, count++);
+    TempDirectory = Path.Combine(path, TempDirectory + extension);
+  }
+
+
   dir.create(TempDirectory)
   setwd(TempDirectory)
 
