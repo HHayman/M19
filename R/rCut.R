@@ -148,10 +148,10 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   #}
 
 
-  for (i in 1:length(CSS_Plots)) {
-    png(paste0("CSS_", CSS_Plots[i], ".png"))
-    dev.off()
-  }
+  #for (i in 1:length(CSS_Plots)) {
+  #png(paste0("CSS_", CSS_Plots[i], ".png"))
+  #dev.off()
+  #}
 
 
   message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) within a folder (CutOffs_Date) in your R directory.")
