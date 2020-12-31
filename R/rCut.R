@@ -39,7 +39,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   NewDirectory <- paste("CutOffs", Sys.Date(), Number, sep = '_')
 
 
-  while(File.Exists(NewDirectory))
+  while(file.exists(NewDirectory))
   {
     Number <- Number + 1
     NewDirectory <- paste("CutOffs", Sys.Date(), Number, sep = '_')
