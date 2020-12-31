@@ -35,7 +35,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
   Number <- 1
-  CurrentDirectory <- getwd()
+  CurrentDirectory <- toString(getwd())
   NewDirectory <- paste("CutOffs", Sys.Date(), Number, sep = '_')
 
 
