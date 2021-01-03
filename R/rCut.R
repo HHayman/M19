@@ -65,98 +65,140 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       CSS_Title <- "Cancer-specific survival cut offs;"
       Plots <- c(Plots, CSS_Plots)
       YourCSSPlots <<- CSS_Plots
-    }
+      n = length(Variables)
+      for (i in 1:n) {
+        png(paste0("CSS_", Variables[i], ".png"))
+        CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
+        SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
+        print(SinglePlot)
+        dev.off()
+      }
 
 
 
-    #Determine cut off for overall survival
-    if (OS == "Yes") {
-      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
-      OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
-      OS_Title <- "Overall survival cut offs;"
-      Plots <- c(Plots, OS_Plots)
-      YourOSPlots <<- OS_Plots
-    }
+      #Determine cut off for overall survival
+      if (OS == "Yes") {
+        OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
+        OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
+        OS_Title <- "Overall survival cut offs;"
+        Plots <- c(Plots, OS_Plots)
+        YourOSPlots <<- OS_Plots
+        n = length(Variables)
+        for (i in 1:n) {
+          png(paste0("OS_", Variables[i], ".png"))
+          OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables[i])
+          SinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Overall Survival")
+          print(SinglePlot)
+          dev.off()
+        }
 
 
 
-    #Determine cut off for progression-free survival
-    if (PFS == "Yes") {
-      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
-      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
-      PFS_Title <- "Progression-free survival cut offs;"
-      Plots <- c(Plots, PFS_Plots)
-      YourPFSPlots <<- PFS_Plots
-    }
-  }
-
-
-
-
-
-
-
-  if (PlotPalette == "Grayscale") {
-    #Determine cut off for cancer-specific survival
-    if (CSS == "Yes") {
-      CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
-      CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
-      CSS_Title <- "Cancer-specific survival cut offs;"
-      Plots <- c(Plots, CSS_Plots)
-      YourCSSPlots <<- CSS_Plots
-    }
-
-
-
-    #Determine cut off for overall survival
-    if (OS == "Yes") {
-      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
-      OS_Plots <- plot(OS.res.cut, Variables, palette = c("#000000", "#FFFFFF"), main="Overall Survival")
-      OS_Title <- "Overall survival cut offs;"
-      Plots <- c(Plots, OS_Plots)
-      YourOSPlots <<- OS_Plots
-    }
-
-
-
-    #Determine cut off for progression-free survival
-    if (PFS == "Yes") {
-      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
-      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#000000", "#FFFFFF"), main="Progression-Free Survival")
-      PFS_Title <- "Progression-free survival cut offs;"
-      Plots <- c(Plots, PFS_Plots)
-      YourPFSPlots <<- PFS_Plots
-    }
-  }
-
-
-
-  YourPlotsAll <<- Plots
-
-  pdf("YourPlots.pdf");
-  print(YourPlotsAll);
-  dev.off();
-
-
-  n = length(Variables)
-  for (i in 1:n) {
-    png(paste0("CSS_", Variables[i], ".png"))
-    CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
-    SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
-    print(SinglePlot)
-    dev.off()
-  }
+        #Determine cut off for progression-free survival
+        if (PFS == "Yes") {
+          PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
+          PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
+          PFS_Title <- "Progression-free survival cut offs;"
+          Plots <- c(Plots, PFS_Plots)
+          YourPFSPlots <<- PFS_Plots
+          n = length(Variables)
+          for (i in 1:n) {
+            png(paste0("PFS_", Variables[i], ".png"))
+            PFS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "PFS", Variables[i])
+            SinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
+            print(SinglePlot)
+            dev.off()
+          }
+        }
 
 
 
 
 
-  message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) within a folder (CutOffs_Date) in your R directory.")
 
 
-  return(Plots);
+        if (PlotPalette == "Grayscale") {
+          #Determine cut off for cancer-specific survival
+          if (CSS == "Yes") {
+            CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+            CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
+            CSS_Title <- "Cancer-specific survival cut offs;"
+            Plots <- c(Plots, CSS_Plots)
+            YourCSSPlots <<- CSS_Plots
+            n = length(Variables)
+            for (i in 1:n) {
+              png(paste0("CSS_", Variables[i], ".png"))
+              CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
+              SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
+              print(SinglePlot)
+              dev.off()
+            }
 
 
-  sink();
 
-}
+            #Determine cut off for overall survival
+            if (OS == "Yes") {
+              OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
+              OS_Plots <- plot(OS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
+              OS_Title <- "Overall survival cut offs;"
+              Plots <- c(Plots, OS_Plots)
+              YourOSPlots <<- OS_Plots
+              n = length(Variables)
+              for (i in 1:n) {
+                png(paste0("OS_", Variables[i], ".png"))
+                OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables[i])
+                SinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
+                print(SinglePlot)
+                dev.off()
+              }
+
+
+
+              #Determine cut off for progression-free survival
+              if (PFS == "Yes") {
+                PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
+                PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
+                PFS_Title <- "Progression-free survival cut offs;"
+                Plots <- c(Plots, PFS_Plots)
+                YourPFSPlots <<- PFS_Plots
+                n = length(Variables)
+                for (i in 1:n) {
+                  png(paste0("PFS_", Variables[i], ".png"))
+                  PFS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "PFS", Variables[i])
+                  SinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
+                  print(SinglePlot)
+                  dev.off()
+                }
+              }
+
+
+
+              YourPlotsAll <<- Plots
+
+              pdf("YourPlots.pdf");
+              print(YourPlotsAll);
+              dev.off();
+
+
+
+              n = length(Variables)
+              for (i in 1:n) {
+                png(paste0("CSS_", Variables[i], ".png"))
+                CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
+                SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
+                print(SinglePlot)
+                dev.off()
+              }
+
+
+
+
+              message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) within a folder (CutOffs_Date) in your R directory.")
+
+
+              return(Plots);
+
+
+              sink();
+
+            }
