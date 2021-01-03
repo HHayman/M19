@@ -181,14 +181,14 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
 
-              n = length(Variables)
-              for (i in 1:n) {
-                png(paste0("CSS_", Variables[i], ".png"))
-                CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
-                SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
-                print(SinglePlot)
-                dev.off()
-              }
+              #n = length(Variables)
+              # for (i in 1:n) {
+              #png(paste0("CSS_", Variables[i], ".png"))
+              #CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
+              # SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
+              #print(SinglePlot)
+              #dev.off()
+              #}
 
 
 
