@@ -179,6 +179,8 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
   YourPlotsAll <<- Plots
+
+  pdf("YourPlots.pdf");
   if (CSS == "Yes") {
     print(CSS.res.cut)
   }
@@ -188,7 +190,6 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
   if (PFS == "Yes") {
     print(PFS.res.cut)
   }
-  pdf("YourPlots.pdf");
   print(YourPlotsAll);
   dev.off();
 
