@@ -63,7 +63,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
       CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
-      Plots <- c(Plots, CSS_Plots)
+      Plots <- c(Plots, CSS.res.cut, CSS_Plots)
       YourCSSPlots <<- CSS_Plots
       n = length(Variables)
       for (i in 1:n) {
@@ -186,7 +186,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
 
-  message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) within a folder (CutOffs_Date) in your R directory.")
+  message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) within a folder (CutOffs_Date_#) in your R directory. She has also provided you with png exports of all graphs for use in presentations - isn't she a star?")
 
 
   return(Plots);
