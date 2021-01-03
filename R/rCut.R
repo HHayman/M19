@@ -69,8 +69,8 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       for (i in 1:n) {
         png(paste0("CSS_", Variables[i], ".png"))
         CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
-        SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
-        print(SinglePlot)
+        SPSSCSSSinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
+        print(SPSSCSSSinglePlot)
         dev.off()
       }
 
@@ -87,8 +87,8 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
         for (i in 1:n) {
           png(paste0("OS_", Variables[i], ".png"))
           OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables[i])
-          SinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Overall Survival")
-          print(SinglePlot)
+          SPSSOSSinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Overall Survival")
+          print(SPSSOSSinglePlot)
           dev.off()
         }
 
@@ -105,7 +105,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
           for (i in 1:n) {
             png(paste0("PFS_", Variables[i], ".png"))
             PFS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "PFS", Variables[i])
-            SinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
+            SPSSPFSSinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
             print(SinglePlot)
             dev.off()
           }
@@ -129,8 +129,8 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
             for (i in 1:n) {
               png(paste0("CSS_", Variables[i], ".png"))
               CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables[i])
-              SinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
-              print(SinglePlot)
+              GSCCCSinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
+              print(GSCSSSinglePlot)
               dev.off()
             }
 
@@ -147,8 +147,8 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
               for (i in 1:n) {
                 png(paste0("OS_", Variables[i], ".png"))
                 OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables[i])
-                SinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
-                print(SinglePlot)
+                GSOSSinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
+                print(GSOSSinglePlot)
                 dev.off()
               }
 
@@ -165,8 +165,8 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
                 for (i in 1:n) {
                   png(paste0("PFS_", Variables[i], ".png"))
                   PFS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "PFS", Variables[i])
-                  SinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
-                  print(SinglePlot)
+                  GSPFSSinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
+                  print(GSPFSSinglePlot)
                   dev.off()
                 }
               }
