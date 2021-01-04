@@ -65,7 +65,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       CSSCutPoints <- summary(CSS.res.cut)
       CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
-      CSSCutPoints <- c(CSS_Title, CSSCutPoints)
+      #CSSCutPoints <- c(CSS_Title, CSSCutPoints)
       Plots <- c(Plots, CSS_Plots)
       YourCSSPlots <<- CSS_Plots
       n = length(Variables)
@@ -86,7 +86,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       OSCutPoints <- summary(OS.res.cut)
       OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
       OS_Title <- "Overall survival cut offs;"
-      OSCutPoints <- c(OS_Title, OSCutPoints)
+      #OSCutPoints <- c(OS_Title, OSCutPoints)
       Plots <- c(Plots, OS_Plots)
       YourOSPlots <<- OS_Plots
       n = length(Variables)
@@ -107,7 +107,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       PFSCutPoints <- summary(PFS.res.cut)
       PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
-      PFSCutPoints <- c(PFS_Title, PFSCutPoints)
+      #PFSCutPoints <- c(PFS_Title, PFSCutPoints)
       Plots <- c(Plots, PFS_Plots)
       YourPFSPlots <<- PFS_Plots
       n = length(Variables)
@@ -133,7 +133,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       CSSCutPoints <- summary(CSS.res.cut)
       CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
-      CSSCutPoints <- c(CSS_Title, CSSCutPoints)
+      #CSSCutPoints <- c(CSS_Title, CSSCutPoints)
       Plots <- c(Plots, CSS_Plots)
       YourCSSPlots <<- CSS_Plots
       n = length(Variables)
@@ -154,7 +154,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       OSCutPoints <- summary(OS.res.cut)
       OS_Plots <- plot(OS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
       OS_Title <- "Overall survival cut offs;"
-      OSCutPoints <- c(OS_Title, OSCutPoints)
+      #OSCutPoints <- c(OS_Title, OSCutPoints)
       Plots <- c(Plots, OS_Plots)
       YourOSPlots <<- OS_Plots
       n = length(Variables)
@@ -175,7 +175,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
       PFSCutPoints <- summary(PFS.res.cut)
       PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
-      PFSCutPoints <- c(PFS_Title, PFSCutPoints)
+      #PFSCutPoints <- c(PFS_Title, PFSCutPoints)
       Plots <- c(Plots, PFS_Plots)
       YourPFSPlots <<- PFS_Plots
       n = length(Variables)
@@ -195,13 +195,13 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   pdf("YourPlots.pdf");
   if (CSS == "Yes") {
-    textplot(CSSCutPoints, halign="center", valign="top", cex = 1)
+    textplot(CSSCutPoints, halign="center", valign="top", cex = 1, main="CSS Cut Offs")
   }
   if (OS == "Yes") {
-    textplot(OSCutPoints, halign="center", valign="center", cex = 1)
+    textplot(OSCutPoints, halign="center", valign="center", cex = 1, main="OS Cut Offs")
   }
   if (PFS == "Yes") {
-    textplot(PFSCutPoints, halign="center", valign="bottom", cex = 1)
+    textplot(PFSCutPoints, halign="center", valign="bottom", cex = 1, main="PFS Cut Offs")
   }
   print(YourPlotsAll);
   dev.off();
