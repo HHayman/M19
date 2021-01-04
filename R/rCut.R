@@ -188,13 +188,13 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   pdf("YourPlots.pdf");
   if (CSS == "Yes") {
-    textplot(CSSCutPoints, halign="center", valign="top", cex = 5)
+    textplot(CSSCutPoints, halign="center", valign="top", cex = 2)
   }
   if (OS == "Yes") {
-    textplot(OSCutPoints, halign="center", valign="center", cex = 5)
+    textplot(OSCutPoints, halign="center", valign="center", cex = 2)
   }
   if (PFS == "Yes") {
-    textplot(PFSCutPoints, halign="center", valign="bottom", cex = 5)
+    textplot(PFSCutPoints, halign="center", valign="bottom", cex = 2)
   }
   print(YourPlotsAll);
   dev.off();
