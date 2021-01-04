@@ -61,6 +61,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
       CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+      CSSCutPoints <- summary(CSS.res.cut)
       CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
       Plots <- c(Plots, CSS_Plots)
@@ -80,6 +81,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for overall survival
     if (OS == "Yes") {
       OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
+      OSCutPoints <- summary(OS.res.cut)
       OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
       OS_Title <- "Overall survival cut offs;"
       Plots <- c(Plots, OS_Plots)
@@ -99,6 +101,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for progression-free survival
     if (PFS == "Yes") {
       PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
+      PFSCutPoints <- summary(PFS.res.cut)
       PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
       Plots <- c(Plots, PFS_Plots)
@@ -123,6 +126,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
       CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", Variables)
+      CSSCutPoints <- summary(CSS.res.cut)
       CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
       Plots <- c(Plots, CSS_Plots)
@@ -142,6 +146,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for overall survival
     if (OS == "Yes") {
       OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", Variables)
+      OSCutPoints <- summary(OS.res.cut)
       OS_Plots <- plot(OS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
       OS_Title <- "Overall survival cut offs;"
       Plots <- c(Plots, OS_Plots)
@@ -161,6 +166,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
     #Determine cut off for progression-free survival
     if (PFS == "Yes") {
       PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, Variables)
+      PFSCutPoints <- summary(PFS.res.cut)
       PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
       Plots <- c(Plots, PFS_Plots)
@@ -182,37 +188,16 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
   pdf("YourPlots.pdf");
   if (CSS == "Yes") {
-    textplot(CSS.res.cut, valign="top")
+    textplot(CSSCutPoints, halign="center", valign="top", cex = 5)
   }
   if (OS == "Yes") {
-    textplot(OS.res.cut, valign="top")
+    textplot(OSCutPoints, halign="center", valign="center", cex = 5)
   }
   if (PFS == "Yes") {
-    textplot(PFS.res.cut, valign="top")
+    textplot(PFSCutPoints, halign="center", valign="bottom", cex = 5)
   }
   print(YourPlotsAll);
   dev.off();
-
-
-  #  if (CSS == "Yes") {
-  #    pdf("YourCSSCutPoints")
-  #    print(CSS.res.cut)
-  #  }
-  #  if (OS == "Yes") {
-  #    pdf("YourOSCutPoints")
-  #    print(OS.res.cut)
-  #  }
-  #  if (PFS == "Yes") {
-  #    pdf("YourPFSCutPoints")
-  #    print(PFS.res.cut)
-  #  }
-
-
-  #pdf("YourCutPoints.pdf");
-  #print(CSS.res.cut);
-  #print(OS.res.cut);
-  #print(PFS.res.cut);
-  #dev.off();
 
 
 
