@@ -10,6 +10,7 @@ rCut(
   CSS,
   OS,
   PFS,
+  PlotPalette = "SPSS",
   ID,
   Survival,
   SurvivalStatus,
