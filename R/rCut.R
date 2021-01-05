@@ -211,7 +211,7 @@ rCut <- function(Data, CSS, OS, PFS, PlotPalette="SPSS", ID, Survival, SurvivalS
 
 
 
-  message("Wonder Woman hopes that you enjoy your cut-offs, which she has popped in a PDF (YourPlots) within a folder (CutOffs_Date_#) in your R directory. She has also provided you with png exports of all graphs for use in presentations - isn't she a star?")
+  message("Wonder Woman hopes that you enjoy your cut-offs. Blessings of Gaea be with you :)")
 
 
   return(Plots);
