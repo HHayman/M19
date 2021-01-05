@@ -26,7 +26,16 @@ library(devtools)
 ![Console - When the vertical dash is flickering, the installation and
 loading is finished.](images/Devtools_Install.png)
 
-Next, you need to install the ‘M19’ package;
+Next, you need to install the ‘gplots’ package;
+
+``` r
+install.packages("gplots")
+```
+
+![Console - When the vertical dash is flickering, the installation and
+loading is finished.](images/gplots_install.png)
+
+Finally, you need to install the ‘M19’ package;
 
 ``` r
 install_github("HHayman/M19")
