@@ -10,16 +10,17 @@
 #' @export
 
 #Function
-ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1", Variable1Unit = "Variable1Unit", Variable2 = "Variable2", Variable2Unit = "Variable2Unit", Survival = "Survival", Stage = "Stage") {
+ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", Stage = "Stage", SurvivalGroups = "Groups", Variable1 = "Variable1", Variable1Unit = "Variable1Unit", Variable2 = "Variable2", Variable2Unit = "Variable2Unit") {
 
   names(Data)[names(Data) == ID] <- "ID"
   names(Data)[names(Data) == Status] <- "Status"
+  names(Data)[names(Data) == Survival] <- "Survival"
+  names(Data)[names(Data) == Stage] <- "Stage"
   names(Data)[names(Data) == Variable1] <- "Variable1"
   names(Data)[names(Data) == Variable1Unit] <- "Variable1Unit"
   names(Data)[names(Data) == Variable2] <- "Variable2"
   names(Data)[names(Data) == Variable2Unit] <- "Variable2Unit"
-  names(Data)[names(Data) == Survival] <- "Survival"
-  names(Data)[names(Data) == Stage] <- "Stage"
+
 
 
   #Selects data based on chosen survival metric
@@ -36,13 +37,21 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1",
   Data <- Data[which(Data$Variable1 > (V1Q[1] - 1.5*V1IQR) & Data$Variable1 < (V1Q[2]+1.5*V1IQR)),]
   Data <- Data[which(Data$Variable1 > (V2Q[1] - 1.5*V2IQR) & Data$Variable1 < (V2Q[2]+1.5*V2IQR)),]
 
-  #Determination of survival descriptives
-  SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = FALSE)
-  SurvIQR <- IQR(Data$Survival)
-  MaxSurvival <- max(Data$Survival)
-  MinSurvival <- min(Data$Survival)
-  MeanSurvival <- mean(Data$Survival)
-  SdSurvival <- sd(Data$Survival)
+
+  if (SurvivalGroups == "Quartiles") {
+    #Determination of survival quartiles
+    SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = FALSE)
+    SurvIQR <- IQR(Data$Survival)
+    MaxSurvival <- max(Data$Survival)
+    MinSurvival <- min(Data$Survival)
+    MeanSurvival <- mean(Data$Survival)
+    SdSurvival <- sd(Data$Survival)
+
+    #Quartile Colours
+    Data$Colour[Data$Survival < SurvQ[1]] = "#CC3232"
+    Data$Colour[Data$Survival >= SurvQ[1] & Data$Survival < SurvQ[2]] = "#E7B416"
+    Data$Colour[Data$Survival >= SurvQ[2]] = "#2DC937"
+  }
 
 
   #determination of variable descriptives
@@ -55,15 +64,6 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Variable1 = "Variable1",
   MaxVariable2 = max(Data$Variable2)
   MaxVariable2 <- customCeiling(MaxVariable2)
   AxisMax <- max(MaxVariable1, MaxVariable2)
-
-
-
-
-  #Quartiles
-  Data$Colour[Data$Survival < SurvQ[1]] = "#CC3232"
-  Data$Colour[Data$Survival >= SurvQ[1] & Data$Survival < SurvQ[2]] = "#E7B416"
-  Data$Colour[Data$Survival >= SurvQ[2]] = "#2DC937"
-
 
 
 
