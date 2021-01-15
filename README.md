@@ -13,7 +13,7 @@ method.
 ## Installation
 
 For generic installation and set-up of R Studio, please see guides
-here\](<https://rstudio-education.github.io/hopr/starting.html>) and
+[here](https://rstudio-education.github.io/hopr/starting.html) and
 [here](http://www.sthda.com/english/wiki/running-rstudio-and-setting-up-your-working-directory-easy-r-programming).
 
 First install and load the ‘devtools’ package;
