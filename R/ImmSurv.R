@@ -107,6 +107,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
     plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
     legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch =c(16, 16, 16, 49, 50, 51) cex=0.7)
+    #legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch = 16 cex=0.7)
     #legend("topright", legend=c("Q1", "Q2 + Q3", "Q4"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
   }
 
