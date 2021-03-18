@@ -47,7 +47,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     MeanSurvival <- mean(Data$Survival)
     SdSurvival <- sd(Data$Survival)
 
-    #Quartile Colours
+    #Colour determination
     Data$Colour[Data$Survival < SurvQ[1]] = "#CC3232"
     Data$Colour[Data$Survival >= SurvQ[1] & Data$Survival < SurvQ[2]] = "#E7B416"
     Data$Colour[Data$Survival >= SurvQ[2]] = "#2DC937"
@@ -59,10 +59,22 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     #Determination of survival groups
     MeanSurvival <- mean(Data$Survival)
 
-    #Quartile Colours
+    #Colour determination
     Data$Colour[Data$Survival <= MeanSurvival] = "#CC3232"
     Data$Colour[Data$Survival > MeanSurvival] = "#2DC937"
   }
+
+
+
+  if (SurvivalGroups == "Median") {
+    #Determination of survival groups
+    MedianSurvival <- median(Data$Survival)
+
+    #Colour determination
+    Data$Colour[Data$Survival <= MedianSurvival] = "#CC3232"
+    Data$Colour[Data$Survival > MedianSurvival] = "#2DC937"
+  }
+
 
 
   #determination of variable descriptives
@@ -85,7 +97,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
     plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
-    legend("topright", legend=c("Q1", "Q2", "Q3"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
+    legend("topright", legend=c("Q1", "Q2 + Q3", "Q4"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
   }
 
 
@@ -95,8 +107,19 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Mean", sep = "")
-    #legend("topright", legend=c("Q1", "Q2", "Q3"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
     plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
+    legend("topright", legend=c("<= mean", "> mean"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
+  }
+
+
+  if (SurvivalGroups == "Median") {
+    #Plots
+
+    xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
+    yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
+    Title = paste(Variable1, " vs ", Variable2, " - Survival by Median", sep = "")
+    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
+    legend("topright", legend=c("<= median", "> median"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
   }
 
 
