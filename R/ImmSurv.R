@@ -90,28 +90,24 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
 
 
 
-  if (SurvivalGroups == "Quartiles" && Marker == "Default") {
+  if (SurvivalGroups == "Quartiles") {
     #Plots
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
-    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
-    #legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch =c(16, 16, 16, 49, 50, 51) cex=0.7)
-    legend("topright", legend=c("Q1", "Q2 + Q3", "Q4"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
+
+    if (Marker == "Default") {
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
+      legend("topright", legend=c("Q1", "Q2 + Q3", "Q4"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
+    }
+    if (Marker == "Stage") {
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
+      #legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch =c(16, 16, 16, 49, 50, 51) cex=0.7)
+    }
   }
 
-  if (SurvivalGroups == "Quartiles" && Marker == "Stage") {
-    #Plots
-    xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
-    yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
-    Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
-    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
-    legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch =c(16, 16, 16, 49, 50, 51) cex=0.7)
-    #legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch = 16 cex=0.7)
-    #legend("topright", legend=c("Q1", "Q2 + Q3", "Q4"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
-  }
 
-  if (SurvivalGroups == "Mean" & Marker == "Default") {
+  if (SurvivalGroups == "Mean") {
     #Plots
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
@@ -120,7 +116,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     legend("topright", legend=c("<= mean", "> mean"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
   }
 
-  if (SurvivalGroups == "Mean" & Marker == "Stage") {
+  if (SurvivalGroups == "Mean") {
     #Plots
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
@@ -129,7 +125,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     legend("topright", legend=c("<= mean", "> mean"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
   }
 
-  if (SurvivalGroups == "Median" & Marker == "Default") {
+  if (SurvivalGroups == "Median") {
     #Plots
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
@@ -138,7 +134,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     legend("topright", legend=c("<= median", "> median"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
   }
 
-  if (SurvivalGroups == "Median" & Marker == "Stage") {
+  if (SurvivalGroups == "Median") {
     #Plots
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
