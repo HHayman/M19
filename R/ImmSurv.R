@@ -105,24 +105,21 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
       legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 16, 49, 50, 51), cex=0.7)
     }
   }
-  #49, 50, 51
 
   if (SurvivalGroups == "Mean") {
     #Plots
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Mean", sep = "")
-    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
-    legend("topright", legend=c("<= mean", "> mean"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
-  }
 
-  if (SurvivalGroups == "Mean") {
-    #Plots
-    xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
-    yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
-    Title = paste(Variable1, " vs ", Variable2, " - Survival by Mean", sep = "")
-    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
-    legend("topright", legend=c("<= mean", "> mean"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
+    if (Marker == "Default") {
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
+      legend("topright", legend=c("<= mean", "> mean"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
+    }
+    if (Marker == "Stage") {
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
+      legend("topright", legend=c("<= mean", "> mean", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 49, 50, 51), cex=0.7)
+    }
   }
 
   if (SurvivalGroups == "Median") {
@@ -130,18 +127,17 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Median", sep = "")
-    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
-    legend("topright", legend=c("<= median", "> median"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
+
+    if (Marker == "Default") {
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
+      legend("topright", legend=c("<= median", "> median"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
+    }
+    if (Marker == "Stage") {
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
+      legend("topright", legend=c("<= median", "> median", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 49, 50, 51), cex=0.7)
+    }
   }
 
-  if (SurvivalGroups == "Median") {
-    #Plots
-    xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
-    yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
-    Title = paste(Variable1, " vs ", Variable2, " - Survival by Median", sep = "")
-    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
-    legend("topright", legend=c("<= median", "> median"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
-  }
 
 
 
