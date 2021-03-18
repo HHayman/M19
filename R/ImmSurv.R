@@ -95,7 +95,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
-    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
+    plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 49)
     legend("topright", legend=c("Q1", "Q2 + Q3", "Q4"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
   }
 
@@ -112,7 +112,6 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
 
   if (SurvivalGroups == "Mean") {
     #Plots
-
     xAxis = paste(Variable1, " (", Variable1Unit, ")", sep = "")
     yAxis = paste(Variable2, " (", Variable2Unit, ")", sep = "")
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Mean", sep = "")
