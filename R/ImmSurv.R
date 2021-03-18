@@ -39,7 +39,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
 
 
   if (SurvivalGroups == "Quartiles") {
-    #Determination of survival quartiles
+    #Determination of survival groups
     SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = FALSE)
     SurvIQR <- IQR(Data$Survival)
     MaxSurvival <- max(Data$Survival)
@@ -51,6 +51,17 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     Data$Colour[Data$Survival < SurvQ[1]] = "#CC3232"
     Data$Colour[Data$Survival >= SurvQ[1] & Data$Survival < SurvQ[2]] = "#E7B416"
     Data$Colour[Data$Survival >= SurvQ[2]] = "#2DC937"
+  }
+
+
+
+  if (SurvivalGroups == "Mean") {
+    #Determination of survival groups
+    MeanSurvival <- mean(Data$Survival)
+
+    #Quartile Colours
+    Data$Colour[Data$Survival <= MeanSurvival] = "#CC3232"
+    Data$Colour[Data$Survival > MeanSurvival] = "#2DC937"
   }
 
 
