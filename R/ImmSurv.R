@@ -10,7 +10,7 @@
 #' @export
 
 #Function
-ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", Stage = "Stage", SurvivalGroups = "Groups", Marker = "Marker", Variable1 = "Variable1", Variable1Unit = "Variable1Unit", Variable2 = "Variable2", Variable2Unit = "Variable2Unit") {
+ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", Stage = "Stage", SurvivalGroups = "Groups", Marker = "Marker", Genes, Variable1 = "Variable1", Variable1Unit = "Variable1Unit", Variable2 = "Variable2", Variable2Unit = "Variable2Unit") {
 
   names(Data)[names(Data) == ID] <- "ID"
   names(Data)[names(Data) == Status] <- "Status"
@@ -103,6 +103,12 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
     if (Marker == "Stage") {
       plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
       legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 16, 49, 50, 51), cex=0.7)
+    }
+    if (Marker == "Genes") {
+      for(i in 1:length(Genes)) {
+        plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Genes[i] == "0", 17, 19))
+        legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Wildtype", "Mutant"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000"), pch=c(16, 16, 16, 17, 19), cex=0.7)
+      }
     }
   }
 
