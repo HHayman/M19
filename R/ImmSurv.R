@@ -146,6 +146,10 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Quartiles", 
       plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
       legend("topright", legend=c("<= median", "> median", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 49, 50, 51), cex=0.7)
     }
+    if (Marker == "Genez") {
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Data$Gene1 == "0", 17, 19))
+      legend("topright", legend=c("<= median", "> median", "Wildtype", "Mutant"), col=c("#CC3232", "#2DC937", "#000000", "#000000"), pch=c(16, 16, 17, 19), cex=0.7)
+    }
   }
 
 
