@@ -67,7 +67,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
   if (PlotPalette == "SPSS") {
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
-      CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, bins = 10, Variables)
+      CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, Variables)
       CSSCutPoints <- summary(CSS.res.cut)
       CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
@@ -76,7 +76,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("CSS_", Variables[i], ".png"))
-        CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, bins = 10, Variables[i])
+        CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, Variables[i])
         SPSSCSSSinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Cancer-Specific Survival")
         print(SPSSCSSSinglePlot)
         dev.off()
@@ -87,7 +87,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for overall survival
     if (OS == "Yes") {
-      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, bins = 10, Variables)
+      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, Variables)
       OSCutPoints <- summary(OS.res.cut)
       OS_Plots <- plot(OS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Overall Survival")
       OS_Title <- "Overall survival cut offs;"
@@ -96,7 +96,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("OS_", Variables[i], ".png"))
-        OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, bins = 10, Variables[i])
+        OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, Variables[i])
         SPSSOSSinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Overall Survival")
         print(SPSSOSSinglePlot)
         dev.off()
@@ -107,7 +107,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for progression-free survival
     if (PFS == "Yes") {
-      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, minprop = minprop, bins = 10, Variables)
+      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, minprop = minprop, Variables)
       PFSCutPoints <- summary(PFS.res.cut)
       PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
@@ -116,7 +116,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("PFS_", Variables[i], ".png"))
-        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "ProgressionStatus", minprop = minprop, bins = 10, Variables[i])
+        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "ProgressionStatus", minprop = minprop, Variables[i])
         SPSSPFSSinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
         print(SPSSPFSSinglePlot)
         dev.off()
@@ -127,7 +127,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for disease-free survival
     if (DFS == "Yes") {
-      DFS.res.cut <- surv_cutpoint(Data, time = DiseaseFree, event = DiseaseFreeStatus, minprop = minprop, bins = 10, Variables)
+      DFS.res.cut <- surv_cutpoint(Data, time = DiseaseFree, event = DiseaseFreeStatus, minprop = minprop, Variables)
       DFSCutPoints <- summary(DFS.res.cut)
       DFS_Plots <- plot(DFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Disease-Free Survival")
       DFS_Title <- "Disease-free survival cut offs;"
@@ -136,7 +136,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("DFS_", Variables[i], ".png"))
-        DFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "DiseaseFreeStatus", minprop = minprop, bins = 10, Variables[i])
+        DFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "DiseaseFreeStatus", minprop = minprop, Variables[i])
         SPSSDFSSinglePlot <- plot(DFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Disease-Free Survival")
         print(SPSSDFSSinglePlot)
         dev.off()
@@ -152,7 +152,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
   if (PlotPalette == "Grayscale") {
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
-      CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, bins = 10, Variables)
+      CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, Variables)
       CSSCutPoints <- summary(CSS.res.cut)
       CSS_Plots <- plot(CSS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
       CSS_Title <- "Cancer-specific survival cut offs;"
@@ -161,7 +161,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("CSS_", Variables[i], ".png"))
-        CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, bins = 10, Variables[i])
+        CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, Variables[i])
         GSCSSinglePlot <- plot(CSS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Cancer-Specific Survival")
         print(GSCSSinglePlot)
         dev.off()
@@ -172,7 +172,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for overall survival
     if (OS == "Yes") {
-      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, bins = 10, Variables)
+      OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, Variables)
       OSCutPoints <- summary(OS.res.cut)
       OS_Plots <- plot(OS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
       OS_Title <- "Overall survival cut offs;"
@@ -181,7 +181,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("OS_", Variables[i], ".png"))
-        OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, bins = 10, Variables[i])
+        OS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "OS", minprop = minprop, Variables[i])
         GSOSinglePlot <- plot(OS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Overall Survival")
         print(GSOSinglePlot)
         dev.off()
@@ -191,7 +191,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for progression-free survival
     if (PFS == "Yes") {
-      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, minprop = minprop, bins = 10, Variables)
+      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, minprop = minprop, Variables)
       PFSCutPoints <- summary(PFS.res.cut)
       PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
@@ -200,7 +200,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("PFS_", Variables[i], ".png"))
-        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "ProgressionStatus", minprop = minprop, bins = 10, Variables[i])
+        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "ProgressionStatus", minprop = minprop, Variables[i])
         GSPFSSinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
         print(GSPFSSinglePlot)
         dev.off()
@@ -209,7 +209,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for disease-free survival
     if (DFS == "Yes") {
-      DFS.res.cut <- surv_cutpoint(Data, time = DiseaseFree, event = DiseaseFreeStatus, minprop = minprop, bins = 10, Variables)
+      DFS.res.cut <- surv_cutpoint(Data, time = DiseaseFree, event = DiseaseFreeStatus, minprop = minprop, Variables)
       DFSCutPoints <- summary(DFS.res.cut)
       DFS_Plots <- plot(DFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Disease-Free Survival")
       DFS_Title <- "Disease-free survival cut offs;"
@@ -218,7 +218,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("DFS_", Variables[i], ".png"))
-        DFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "DiseaseFreeStatus", minprop = minprop, bins = 10, Variables[i])
+        DFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "DiseaseFreeStatus", minprop = minprop, Variables[i])
         GSDFSSinglePlot <- plot(DFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Disease-Free Survival")
         print(GSDFSSinglePlot)
         dev.off()
