@@ -18,7 +18,7 @@
 
 #Function
 
-rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID, Survival, SurvivalStatus, Progression, ProgressionStatus, DiseaseFree, DiseaseFreeStatus, Variables)
+rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID, Survival="Survival", SurvivalStatus="SurvivalStatus", Progression="Progression", ProgressionStatus="ProgressionStatus", DiseaseFree="DiseaseFree", DiseaseFreeStatus="DiseaseFreeStatus", Variables)
 {
   if (!all(Variables %in% colnames(Data)))
     stop("Some variables are not found in the data: ",
