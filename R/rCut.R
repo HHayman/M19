@@ -243,26 +243,25 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop, PlotPalette="SPSS", ID, Survi
     textplot(PFSCutPoints, halign="center", valign="top", cex = 1)
     title("PFS Cut Offs")
   }
-}
-if (DFS == "Yes") {
-  textplot(DFSCutPoints, halign="center", valign="top", cex = 1)
-  title("DFS Cut Offs")
-}
-print(YourPlotsAll);
-dev.off();
+  if (DFS == "Yes") {
+    textplot(DFSCutPoints, halign="center", valign="top", cex = 1)
+    title("DFS Cut Offs")
+  }
+  print(YourPlotsAll);
+  dev.off();
 
 
-write.csv(OriginalData,"OriginalData.csv", row.names = FALSE)
-write.csv(Data,"ModifiedData.csv", row.names = FALSE)
+  write.csv(OriginalData,"OriginalData.csv", row.names = FALSE)
+  write.csv(Data,"ModifiedData.csv", row.names = FALSE)
 
 
 
-message("Wonder Woman hopes that you enjoy your cut-offs. Blessings of Gaea be with you :)")
+  message("Wonder Woman hopes that you enjoy your cut-offs. Blessings of Gaea be with you :)")
 
 
-return(Plots);
+  return(Plots);
 
 
-sink();
+  sink();
 
 }
