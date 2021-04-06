@@ -39,6 +39,8 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
   names(Data)[names(Data) == Progression] <- "Progression"
   names(Data)[names(Data) == DiseaseFreeStatus] <- "DiseaseFreeStatus"
   names(Data)[names(Data) == DiseaseFree] <- "DiseaseFree"
+  Data$DFS <- ifelse(Data$DiseaseFreeStatus > 0, c("1"), c("0"))
+  Data$DFS <- as.numeric(Data$DFS)
 
 
   Number <- 1
