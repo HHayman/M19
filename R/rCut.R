@@ -109,7 +109,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for progression-free survival
     if (PFS == "Yes") {
-      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, minprop = minprop, Variables)
+      PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "PFS", minprop = minprop, Variables)
       PFSCutPoints <- summary(PFS.res.cut)
       PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
       PFS_Title <- "Progression-free survival cut offs;"
@@ -118,7 +118,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("PFS_", Variables[i], ".png"))
-        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "ProgressionStatus", minprop = minprop, Variables[i])
+        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "PFS", minprop = minprop, Variables[i])
         SPSSPFSSinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
         print(SPSSPFSSinglePlot)
         dev.off()
@@ -129,7 +129,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
     #Determine cut off for disease-free survival
     if (DFS == "Yes") {
-      DFS.res.cut <- surv_cutpoint(Data, time = DiseaseFree, event = DiseaseFreeStatus, minprop = minprop, Variables)
+      DFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "DFS", minprop = minprop, Variables)
       DFSCutPoints <- summary(DFS.res.cut)
       DFS_Plots <- plot(DFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Disease-Free Survival")
       DFS_Title <- "Disease-free survival cut offs;"
@@ -138,7 +138,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("DFS_", Variables[i], ".png"))
-        DFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "DiseaseFreeStatus", minprop = minprop, Variables[i])
+        DFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "DFS", minprop = minprop, Variables[i])
         SPSSDFSSinglePlot <- plot(DFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Disease-Free Survival")
         print(SPSSDFSSinglePlot)
         dev.off()
