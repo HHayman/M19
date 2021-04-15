@@ -18,7 +18,7 @@
 
 #Function
 
-rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette="SPSS", ID, Survival="Survival", SurvivalStatus="SurvivalStatus", Progression="Progression", ProgressionStatus="ProgressionStatus", DiseaseFree="DiseaseFree", DiseaseFreeStatus="DiseaseFreeStatus", Recurrence="Recurrence", RecurrenceStatus="RecurrenceStatus", Miscellaneous="Miscellaneous", MiscellaneousStatus="MiscellaneousStatus", Variables)
+rCut <- function(Data, CSS, OS, DFS, RFS, MISC, minprop="0.1", PlotPalette="SPSS", ID, Survival="Survival", SurvivalStatus="SurvivalStatus", DiseaseFree="DiseaseFree", DiseaseFreeStatus="DiseaseFreeStatus", Recurrence="Recurrence", RecurrenceStatus="RecurrenceStatus", Miscellaneous="Miscellaneous", MiscellaneousStatus="MiscellaneousStatus", Variables)
 {
   if (!all(Variables %in% colnames(Data)))
     stop("Some variables are not found in the data: ",
@@ -31,8 +31,6 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
   #Reconfigure variables
   names(Data)[names(Data) == SurvivalStatus] <- "SurvivalStatus"
   names(Data)[names(Data) == Survival] <- "Survival"
-  names(Data)[names(Data) == ProgressionStatus] <- "ProgressionStatus"
-  names(Data)[names(Data) == Progression] <- "Progression"
   names(Data)[names(Data) == DiseaseFreeStatus] <- "DiseaseFreeStatus"
   names(Data)[names(Data) == DiseaseFree] <- "DiseaseFree"
   names(Data)[names(Data) == RecurrenceStatus] <- "RecurrenceStatus"
@@ -126,28 +124,6 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
         dev.off()
       }
     }
-
-
-
-    #Determine cut off for progression-free survival
-    if (PFS == "Yes") {
-      PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "PFS", minprop = minprop, Variables)
-      PFSCutPoints <- summary(PFS.res.cut)
-      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
-      PFS_Title <- "Progression-free survival cut offs;"
-      Plots <- c(Plots, PFS_Plots)
-      YourPFSPlots <<- PFS_Plots
-      n = length(Variables)
-      for (i in 1:n) {
-        png(paste0("PFS_", Variables[i], ".png"))
-        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "PFS", minprop = minprop, Variables[i])
-        SPSSPFSSinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Progression-Free Survival")
-        print(SPSSPFSSinglePlot)
-        dev.off()
-      }
-    }
-
-
 
     #Determine cut off for disease-free survival
     if (DFS == "Yes") {
@@ -248,25 +224,6 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
       }
     }
 
-
-    #Determine cut off for progression-free survival
-    if (PFS == "Yes") {
-      PFS.res.cut <- surv_cutpoint(Data, time = Progression, event = ProgressionStatus, minprop = minprop, Variables)
-      PFSCutPoints <- summary(PFS.res.cut)
-      PFS_Plots <- plot(PFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
-      PFS_Title <- "Progression-free survival cut offs;"
-      Plots <- c(Plots, PFS_Plots)
-      YourPFSPlots <<- PFS_Plots
-      n = length(Variables)
-      for (i in 1:n) {
-        png(paste0("PFS_", Variables[i], ".png"))
-        PFS.res.cut <- surv_cutpoint(Data, time = "Progression", event = "ProgressionStatus", minprop = minprop, Variables[i])
-        GSPFSSinglePlot <- plot(PFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Progression-Free Survival")
-        print(GSPFSSinglePlot)
-        dev.off()
-      }
-    }
-
     #Determine cut off for disease-free survival
     if (DFS == "Yes") {
       DFS.res.cut <- surv_cutpoint(Data, time = DiseaseFree, event = DiseaseFreeStatus, minprop = minprop, Variables)
@@ -333,10 +290,6 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
   if (OS == "Yes") {
     textplot(OSCutPoints, halign="center", valign="top", cex = 1)
     title("OS Cut Offs")
-  }
-  if (PFS == "Yes") {
-    textplot(PFSCutPoints, halign="center", valign="top", cex = 1)
-    title("PFS Cut Offs")
   }
   if (DFS == "Yes") {
     textplot(DFSCutPoints, halign="center", valign="top", cex = 1)
