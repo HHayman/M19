@@ -18,7 +18,7 @@
 
 #Function
 
-rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID, Survival="Survival", SurvivalStatus="SurvivalStatus", Progression="Progression", ProgressionStatus="ProgressionStatus", DiseaseFree="DiseaseFree", DiseaseFreeStatus="DiseaseFreeStatus", Variables)
+rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette="SPSS", ID, Survival="Survival", SurvivalStatus="SurvivalStatus", Progression="Progression", ProgressionStatus="ProgressionStatus", DiseaseFree="DiseaseFree", DiseaseFreeStatus="DiseaseFreeStatus", Recurrence="Recurrence", RecurrenceStatus="RecurrenceStatus", Miscellaneous="Miscellaneous", MiscellaneousStatus="MiscellaneousStatus", Variables)
 {
   if (!all(Variables %in% colnames(Data)))
     stop("Some variables are not found in the data: ",
@@ -41,6 +41,13 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
   names(Data)[names(Data) == DiseaseFree] <- "DiseaseFree"
   Data$DFS <- ifelse(Data$DiseaseFreeStatus > 0, c("1"), c("0"))
   Data$DFS <- as.numeric(Data$DFS)
+  names(Data)[names(Data) == RecurrenceStatus] <- "RecurrenceStatus"
+  names(Data)[names(Data) == Recurrence] <- "Recurrence"
+  Data$RFS <- ifelse(Data$RecurrenceStatus == 1, c("1"), c("0"))
+
+  names(Data)[names(Data) == MiscellaneousStatus] <- "MiscellaneousStatus"
+  names(Data)[names(Data) == Miscellaneous] <- "Miscellaneous"
+  Data$MISC <- ifelse(Data$MiscellaneousStatus == 1, c("1"), c("0"))
 
 
   Number <- 1
@@ -67,6 +74,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
   sink("waste.txt")
 
   if (PlotPalette == "SPSS") {
+
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
       CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, Variables)
@@ -144,6 +152,41 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
         dev.off()
       }
     }
+
+    if (RFS == "Yes") {
+      RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables)
+      RFSCutPoints <- summary(RFS.res.cut)
+      RFS_Plots <- plot(RFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Recurrence Survival")
+      RFS_Title <- "Recurrence-free survival cut offs;"
+      Plots <- c(Plots, RFS_Plots)
+      YourRFSPlots <<- RFS_Plots
+      n = length(Variables)
+      for (i in 1:n) {
+        png(paste0("RFS_", Variables[i], ".png"))
+        RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables[i])
+        SPSSRFSSinglePlot <- plot(RFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Recurrence-Free Survival")
+        print(SPSSRFSSinglePlot)
+        dev.off()
+      }
+    }
+
+    if (MISC == "Yes") {
+      MISC.res.cut <- surv_cutpoint(Data, time = "Miscellaneous", event = "MISC", minprop = minprop, Variables)
+      MISCCutPoints <- summary(MISC.res.cut)
+      MISC_Plots <- plot(MISC.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Miscellaneous Survival")
+      MISC_Title <- "Miscellaneous survival cut offs;"
+      Plots <- c(Plots, MISC_Plots)
+      YourMISCPlots <<- MISC_Plots
+      n = length(Variables)
+      for (i in 1:n) {
+        png(paste0("CSS_", Variables[i], ".png"))
+        MISC.res.cut <- surv_cutpoint(Data, time = "Miscellaneous", event = "MISC", minprop = minprop, Variables[i])
+        SPSSCSSSinglePlot <- plot(MISC.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Miscellaneous Survival")
+        print(SPSSMISCSinglePlot)
+        dev.off()
+      }
+    }
+
   }
 
 
@@ -152,6 +195,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
 
 
   if (PlotPalette == "Grayscale") {
+
     #Determine cut off for cancer-specific survival
     if (CSS == "Yes") {
       CSS.res.cut <- surv_cutpoint(Data, time = "Survival", event = "CSS", minprop = minprop, Variables)
@@ -226,6 +270,41 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
         dev.off()
       }
     }
+
+    if (RFS == "Yes") {
+      RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables)
+      RFSCutPoints <- summary(RFS.res.cut)
+      RFS_Plots <- plot(RFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Recurrence Survival")
+      RFS_Title <- "Recurrence-free survival cut offs;"
+      Plots <- c(Plots, RFS_Plots)
+      YourRFSPlots <<- RFS_Plots
+      n = length(Variables)
+      for (i in 1:n) {
+        png(paste0("RFS_", Variables[i], ".png"))
+        RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables[i])
+        SPSSRFSSinglePlot <- plot(RFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Recurrence-Free Survival")
+        print(SPSSRFSSinglePlot)
+        dev.off()
+      }
+    }
+
+    if (MISC == "Yes") {
+      MISC.res.cut <- surv_cutpoint(Data, time = "Miscellaneous", event = "MISC", minprop = minprop, Variables)
+      MISCCutPoints <- summary(MISC.res.cut)
+      MISC_Plots <- plot(MISC.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Miscellaneous Survival")
+      MISC_Title <- "Miscellaneous survival cut offs;"
+      Plots <- c(Plots, MISC_Plots)
+      YourMISCPlots <<- MISC_Plots
+      n = length(Variables)
+      for (i in 1:n) {
+        png(paste0("CSS_", Variables[i], ".png"))
+        MISC.res.cut <- surv_cutpoint(Data, time = "Miscellaneous", event = "MISC", minprop = minprop, Variables[i])
+        SPSSCSSSinglePlot <- plot(MISC.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Miscellaneous Survival")
+        print(SPSSMISCSinglePlot)
+        dev.off()
+      }
+    }
+
   }
 
 
@@ -248,6 +327,14 @@ rCut <- function(Data, CSS, OS, PFS, DFS, minprop="0.1", PlotPalette="SPSS", ID,
   if (DFS == "Yes") {
     textplot(DFSCutPoints, halign="center", valign="top", cex = 1)
     title("DFS Cut Offs")
+  }
+  if (RFS == "Yes") {
+    textplot(RFSCutPoints, halign="center", valign="top", cex = 1)
+    title("RFS Cut Offs")
+  }
+  if (MISC == "Yes") {
+    textplot(MISCCutPoints, halign="center", valign="top", cex = 1)
+    title("MISC Cut Offs")
   }
   print(YourPlotsAll);
   dev.off();
