@@ -31,23 +31,37 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
   #Reconfigure variables
   names(Data)[names(Data) == SurvivalStatus] <- "SurvivalStatus"
   names(Data)[names(Data) == Survival] <- "Survival"
-  Data$CSS <- ifelse(Data$SurvivalStatus == 1, c("1"), c("0"))
-  Data$OS <- ifelse(Data$SurvivalStatus > 0, c("1"), c("0"))
-  Data$CSS <- as.numeric(Data$CSS)
-  Data$OS <- as.numeric(Data$OS)
   names(Data)[names(Data) == ProgressionStatus] <- "ProgressionStatus"
   names(Data)[names(Data) == Progression] <- "Progression"
   names(Data)[names(Data) == DiseaseFreeStatus] <- "DiseaseFreeStatus"
   names(Data)[names(Data) == DiseaseFree] <- "DiseaseFree"
-  Data$DFS <- ifelse(Data$DiseaseFreeStatus > 0, c("1"), c("0"))
-  Data$DFS <- as.numeric(Data$DFS)
   names(Data)[names(Data) == RecurrenceStatus] <- "RecurrenceStatus"
   names(Data)[names(Data) == Recurrence] <- "Recurrence"
-  Data$RFS <- ifelse(Data$RecurrenceStatus == 1, c("1"), c("0"))
-
   names(Data)[names(Data) == MiscellaneousStatus] <- "MiscellaneousStatus"
   names(Data)[names(Data) == Miscellaneous] <- "Miscellaneous"
-  Data$MISC <- ifelse(Data$MiscellaneousStatus == 1, c("1"), c("0"))
+
+  if (CSS == "Yes") {
+    Data$CSS <- ifelse(Data$SurvivalStatus == 1, c("1"), c("0"))
+    Data$CSS <- as.numeric(Data$CSS)
+  }
+  if (OS == "Yes") {
+    Data$OS <- ifelse(Data$SurvivalStatus > 0, c("1"), c("0"))
+    Data$OS <- as.numeric(Data$OS)
+  }
+
+  if (DFS == "Yes") {
+    Data$DFS <- ifelse(Data$DiseaseFreeStatus > 0, c("1"), c("0"))
+    Data$DFS <- as.numeric(Data$DFS)
+  }
+
+  if (RFS == "Yes") {
+    Data$RFS <- ifelse(Data$RecurrenceStatus == 1, c("1"), c("0"))
+    Data$RFS <- as.numeric(Data$RFS)
+  }
+  if (MISC == "Yes") {
+    Data$MISC <- ifelse(Data$MiscellaneousStatus == 1, c("1"), c("0"))
+    Data$MISC <- as.numeric(Data$MISC)
+  }
 
 
   Number <- 1
