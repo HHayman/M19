@@ -36,7 +36,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
   names(Data)[names(Data) == DiseaseFreeStatus] <- "DiseaseFreeStatus"
   names(Data)[names(Data) == DiseaseFree] <- "DiseaseFree"
   names(Data)[names(Data) == RecurrenceStatus] <- "RecurrenceStatus"
-  names(Data)[names(Data) == Recurrence] <- "Recurrence"
+  names(Data)[names(Data) == Recurrence] <- "DiseaseFree"
   names(Data)[names(Data) == MiscellaneousStatus] <- "MiscellaneousStatus"
   names(Data)[names(Data) == Miscellaneous] <- "Miscellaneous"
 
@@ -168,7 +168,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
     }
 
     if (RFS == "Yes") {
-      RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables)
+      RFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "RFS", minprop = minprop, Variables)
       RFSCutPoints <- summary(RFS.res.cut)
       RFS_Plots <- plot(RFS.res.cut, Variables, palette = c("#d70033", "#5596e6"), main="Recurrence Survival")
       RFS_Title <- "Recurrence-free survival cut offs;"
@@ -177,7 +177,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("RFS_", Variables[i], ".png"))
-        RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables[i])
+        RFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "RFS", minprop = minprop, Variables[i])
         SPSSRFSSinglePlot <- plot(RFS.res.cut, Variables[i], palette = c("#d70033", "#5596e6"), main="Recurrence-Free Survival")
         print(SPSSRFSSinglePlot)
         dev.off()
@@ -286,7 +286,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
     }
 
     if (RFS == "Yes") {
-      RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables)
+      RFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "RFS", minprop = minprop, Variables)
       RFSCutPoints <- summary(RFS.res.cut)
       RFS_Plots <- plot(RFS.res.cut, Variables, palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Recurrence Survival")
       RFS_Title <- "Recurrence-free survival cut offs;"
@@ -295,7 +295,7 @@ rCut <- function(Data, CSS, OS, PFS, DFS, RFS, MISC, minprop="0.1", PlotPalette=
       n = length(Variables)
       for (i in 1:n) {
         png(paste0("RFS_", Variables[i], ".png"))
-        RFS.res.cut <- surv_cutpoint(Data, time = "Recurrence", event = "RFS", minprop = minprop, Variables[i])
+        RFS.res.cut <- surv_cutpoint(Data, time = "DiseaseFree", event = "RFS", minprop = minprop, Variables[i])
         SPSSRFSSinglePlot <- plot(RFS.res.cut, Variables[i], palette = c("#000000", "#ABABAB", "#545454", "#FFFFFF"), main="Recurrence-Free Survival")
         print(SPSSRFSSinglePlot)
         dev.off()
