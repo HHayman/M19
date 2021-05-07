@@ -30,9 +30,9 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Survival", S
   Data$Colour <- "Colour"
 
   #Removal of variable outliers
-  V1Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = TRUE)
+  V1Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = FALSE)
   V1IQR <- IQR(Data$Variable1)
-  V2Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = TRUE)
+  V2Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = FALSE)
   V2IQR <- IQR(Data$Variable1)
   Data <- Data[which(Data$Variable1 > (V1Q[1] - 1.5*V1IQR) & Data$Variable1 < (V1Q[2]+1.5*V1IQR)),]
   Data <- Data[which(Data$Variable1 > (V2Q[1] - 1.5*V2IQR) & Data$Variable1 < (V2Q[2]+1.5*V2IQR)),]
@@ -40,7 +40,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Survival", S
 
   if (SurvivalGroups == "Quartiles") {
     #Determination of survival groups
-    SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = TRUE)
+    SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = FALSE)
     SurvIQR <- IQR(Data$Survival)
     MaxSurvival <- max(Data$Survival)
     MinSurvival <- min(Data$Survival)
@@ -97,21 +97,21 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Survival", S
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Quartiles", sep = "")
 
     if (Marker == "Default") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16, na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
       legend("topright", legend=c("Q1", "Q2 + Q3", "Q4"), col=c("#CC3232", "#E7B416", "#2DC937"), pch = 16, cex=0.7)
     }
     if (Marker == "Stage") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage), na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
       legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 16, 49, 50, 51), cex=0.7)
     }
     if (Marker == "Genes") {
       for(i in 1:length(Data$Genes)) {
-        plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Data$Genes[i] == "0", 17, 19), na.rm = TRUE)
+        plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Data$Genes[i] == "0", 17, 19))
         legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Wildtype", "Mutant"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000"), pch=c(16, 16, 16, 17, 19), cex=0.7)
       }
     }
     if (Marker == "Genez") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Data$Gene1 == "0", 17, 19), na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Data$Gene1 == "0", 17, 19))
       legend("topright", legend=c("Q1", "Q2 + Q3", "Q4", "Wildtype", "Mutant"), col=c("#CC3232", "#E7B416", "#2DC937", "#000000", "#000000"), pch=c(16, 16, 16, 17, 19), cex=0.7)
     }
   }
@@ -123,11 +123,11 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Survival", S
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Mean", sep = "")
 
     if (Marker == "Default") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16, na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
       legend("topright", legend=c("<= mean", "> mean"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
     }
     if (Marker == "Stage") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage), na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
       legend("topright", legend=c("<= mean", "> mean", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 49, 50, 51), cex=0.7)
     }
   }
@@ -139,15 +139,15 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Survival", S
     Title = paste(Variable1, " vs ", Variable2, " - Survival by Median", sep = "")
 
     if (Marker == "Default") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16, na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = 16)
       legend("topright", legend=c("<= median", "> median"), col=c("#CC3232", "#2DC937"), pch = 16, cex=0.7)
     }
     if (Marker == "Stage") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage), na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = as.character(Data$Stage))
       legend("topright", legend=c("<= median", "> median", "Stage I", "Stage II", "Stage III"), col=c("#CC3232", "#2DC937", "#000000", "#000000", "#000000"), pch=c(16, 16, 49, 50, 51), cex=0.7)
     }
     if (Marker == "Genez") {
-      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Data$Gene1 == "0", 17, 19), na.rm = TRUE)
+      plot(Data$Variable1,Data$Variable2, col=Data$Colour, xlim=c(0,AxisMax), ylim=c(0,AxisMax), cex=0.7, xlab = xAxis, ylab = yAxis, main = Title, pch = ifelse(Data$Gene1 == "0", 17, 19))
       legend("topright", legend=c("<= median", "> median", "Wildtype", "Mutant"), col=c("#CC3232", "#2DC937", "#000000", "#000000"), pch=c(16, 16, 17, 19), cex=0.7)
     }
   }
