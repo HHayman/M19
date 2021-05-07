@@ -30,9 +30,9 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Survival", S
   Data$Colour <- "Colour"
 
   #Removal of variable outliers
-  V1Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = FALSE)
+  V1Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = TRUE)
   V1IQR <- IQR(Data$Variable1)
-  V2Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = FALSE)
+  V2Q <- quantile(Data$Variable1, probs=c(.25, .75), na.rm = TRUE)
   V2IQR <- IQR(Data$Variable1)
   Data <- Data[which(Data$Variable1 > (V1Q[1] - 1.5*V1IQR) & Data$Variable1 < (V1Q[2]+1.5*V1IQR)),]
   Data <- Data[which(Data$Variable1 > (V2Q[1] - 1.5*V2IQR) & Data$Variable1 < (V2Q[2]+1.5*V2IQR)),]
@@ -40,7 +40,7 @@ ImmSurv <- function(Data, ID = "ID", Status = "Status", Survival = "Survival", S
 
   if (SurvivalGroups == "Quartiles") {
     #Determination of survival groups
-    SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = FALSE)
+    SurvQ <- quantile(Data$Survival, probs=c(.25, .75), na.rm = TRUE)
     SurvIQR <- IQR(Data$Survival)
     MaxSurvival <- max(Data$Survival)
     MinSurvival <- min(Data$Survival)
