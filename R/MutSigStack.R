@@ -6,6 +6,8 @@
 
 
 #' @import tidyverse
+#' @import ggpubr
+#' @import ggplot2
 
 
 #' @param Subdirectory A subdirectory of your working directory, in which you store your comparison files.
