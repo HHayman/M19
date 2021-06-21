@@ -119,7 +119,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
   #Generation of plot
 
   if (Palette == "Greyscale") {
-  MutSigStack <<- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
+  MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
     labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
     scale_fill_manual(values = c("slategrey", "black", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
     labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
@@ -133,7 +133,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
   }
 
   if (Palette == "Blue") {
-    MutSigStack <<- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
+    MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("deepskyblue", "dodgerblue4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
@@ -147,7 +147,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
   }
 
   if (Palette == "Red") {
-    MutSigStack <<- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
+    MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("firebrick1", "firebrick4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
@@ -161,7 +161,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
   }
 
   if (Palette == "Green") {
-    MutSigStack <<- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
+    MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("darkolivegreen1", "darkgreen", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
@@ -175,7 +175,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
   }
 
   if (Palette == "Pink") {
-    MutSigStack <<- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
+    MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("deeppink", "deeppink4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
