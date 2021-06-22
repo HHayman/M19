@@ -29,7 +29,8 @@
 
 
 #Function
-MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "0.05", Palette = "Greyscale") {
+MutSigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = "0.5", ORhigh = "2", pval = "0.05", Palette = "Greyscale") {
+
 
 
   #Check input for errors
@@ -136,7 +137,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
     MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("deepskyblue", "dodgerblue4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
-                        labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
+                        labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                       axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
@@ -150,7 +151,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
     MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("firebrick1", "firebrick4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
-                        labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
+                        labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                       axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
@@ -164,7 +165,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
     MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("darkolivegreen1", "darkgreen", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
-                        labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
+                        labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                       axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
@@ -178,7 +179,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
     MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("deeppink", "deeppink4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
-                        labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
+                        labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                       axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
@@ -192,7 +193,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
 
   #Printing of plot
   print(MutSigStack)
-  tiff("MutSigStack.tiff")
+  tiff(paste(OutputFileName, ".tiff", sep = ""))
   print(MutSigStack)
   dev.off()
 
