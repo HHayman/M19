@@ -44,7 +44,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
   if (file.exists(Subdirectory)){
   setwd(Subdirectory)
   } else {
-  stop('Incompatible subdirectory. Please check the name of the folder containing your files.')
+  stop('Incompatible subdirectory. Please check the name of the folder containing your files.It should be a subdirectory within your working directory.')
   }
 
 
@@ -122,7 +122,7 @@ MutSigStack <- function(Subdirectory = "", ORlow = "0.5", ORhigh = "2", pval = "
   MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
     labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
     scale_fill_manual(values = c("slategrey", "black", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
-    labels = c("OR < 0.5", "OR > 2", "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
+    labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
     axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
     theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
