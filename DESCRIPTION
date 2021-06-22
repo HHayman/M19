@@ -9,7 +9,7 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Imports:
 	tidyverse (>= 1.3.1),
-	ggpubr (>= 0.4.0.99),
+	ggpubr (>= 0.4.0),
 	ggplot2 (>= 3.3.4),
 Encoding: UTF-8
 LazyData: true
