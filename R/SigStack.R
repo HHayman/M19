@@ -80,6 +80,27 @@ SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = 
   }
 
 
+
+  #Check for empty dataframes
+  DeletedDataFrames <- list()
+  Rows <- 1
+  for(i in 1:length(filenames)){
+    if(nrow(DataFrames[[filenames[i]]]) == 0) {
+      Rows <- 0
+      DeletedDataFrames <- c(DeletedDataFrames, filenames[i])
+      # # DataFrames[[filenames[i]]] <- NULL
+      # # filenames[i] <- NULL
+      # DataFrames = DataFrames[names(DataFrames) != (DataFrames[[filenames[i]]])]
+      # FileNames = Filenames != filenames[i]
+    }
+  }
+
+
+  if(Rows == 0) {
+   stop(paste("The following datasets had no viable genes after filtering by OR and p value; ", DeletedDataFrames, ". Please remove them from analysis."))
+  }
+
+
   #Variables cut down to genes, odds ratio and p value
   Variables <- c("Hugo_Symbol", "or", "pval")
   for(i in 1:length(filenames)){
