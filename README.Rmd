@@ -156,7 +156,7 @@ SigStack(Subdirectory = "SubDirectory", OutputFileName = "OutputFileName", ORlow
 *Palette - Choose your colour palette; greyscale, blue, red, pink, green. Default palette is greyscale.
 
 
-![A SigStack example.](images/SigStack_Example.tiff)
+![A SigStack example.](images/SigStack_Example.png)
 
 
 
