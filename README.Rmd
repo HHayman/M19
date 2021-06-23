@@ -157,7 +157,7 @@ SigStack(Subdirectory = "SubDirectory", OutputFileName = "OutputFileName", ORlow
 
 
 
-![A SigStack example.](https://github.com/HHayman/M19/blob/main/images/SigStack_Example.TIFF)
+![A SigStack example.](https://github.com/HHayman/M19/raw/main/images/SigStack_Example.TIFF)
 
 
 

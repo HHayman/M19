@@ -182,4 +182,4 @@ Default value is 0.05. *Palette - Choose your colour palette; greyscale,
 blue, red, pink, green. Default palette is greyscale.
 
 ![A SigStack
-example.](https://github.com/HHayman/M19/blob/main/images/SigStack_Example.TIFF)
+example.](https://github.com/HHayman/M19/raw/main/images/SigStack_Example.TIFF)
