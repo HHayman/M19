@@ -43,7 +43,9 @@ install_github("HHayman/M19")
 ![Console - When the vertical dash is flickering, the installation and
 loading is finished.](images/M19_Install.png)
 
-# rCut - Create cut-offs using the maximally selected rank statistic
+# rCut
+
+\#\#Create cut-offs using the maximally selected rank statistic
 
 ## Preparing Data
 
@@ -139,3 +141,44 @@ avoiding clutter. Ignore it
 
 ![Your data folder within your R working
 directory.](images/Data_Folder_Contents.png)
+
+# SigStack
+
+## Stack your mutational signatures for easy visual comparison.
+
+## Preparing Data
+
+You need to use MafTools to run comparisons between your groups, using
+MafCompare. You need to write the ‘results’ from the MafCompare to a
+CSV, and you must use write.csv2 or this will not work due to formatting
+issues. Do this for each comparison. As an example;
+
+``` r
+ComparisonFile <- mafCompare(m1 = Group1, m2 = Group2, m1Name = "Group1", m2Name = "Group2", minMut = 5)
+write.csv2(ComparisonFile[["results"]], "ComparisonFile.csv")
+```
+
+## Creating your SigStack plots.
+
+Create a folder within your working directory and in it place the files
+you just created, one for each comparison you want to stack. The
+function will stack all comparisons that you include in the
+subdirectory, so swap them in and out as you need to. Each group; in
+your SigStack plot is named using the name of your comparison files. You
+can then run the ‘SigStack’ function, as below;
+
+``` r
+SigStack(Subdirectory = "SubDirectory", OutputFileName = "OutputFileName", ORlow = "0.5", ORhigh = "2", pval = "0.1", Palette = "Greyscale")
+```
+
+*Subdirectory - A subdirectory of your working directory, in which you
+store your comparison files. *OutputFileName - A name for your final
+outpt file. *ORlow - The lower boundary for your OR. DMGs with an odds
+ratio between this value and your ORhigh will be excluded.Default value
+is 0.5. *ORhigh - The upper boundary for your OR. DMGs with an odds
+ratio between this value and your ORlow will be excluded.Default value
+is 2. *pval - Your chosen cut off for ‘statistical significance’.
+Default value is 0.05. *Palette - Choose your colour palette; greyscale,
+blue, red, pink, green. Default palette is greyscale.
+
+![A SigStack example.](images/SigStack_Example.tiff)
