@@ -181,4 +181,5 @@ is 2. *pval - Your chosen cut off for ‘statistical significance’.
 Default value is 0.05. *Palette - Choose your colour palette; greyscale,
 blue, red, pink, green. Default palette is greyscale.
 
-![A SigStack example.](images/SigStack_Example.tiff)
+![A SigStack
+example.](https://github.com/%5BHHayman%5D/%5BM19%5D/blob/%5Bmain%5D/images/SigStack_Example.tiff?raw=true))
