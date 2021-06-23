@@ -43,9 +43,9 @@ MutSigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow
   #Alter working directory
   WD <- getwd()
   if (file.exists(Subdirectory)){
-  setwd(Subdirectory)
+    setwd(Subdirectory)
   } else {
-  stop('Incompatible subdirectory. Please check the name of the folder containing your files.It should be a subdirectory within your working directory.')
+    stop('Incompatible subdirectory. Please check the name of the folder containing your files.It should be a subdirectory within your working directory.')
   }
 
 
@@ -120,17 +120,17 @@ MutSigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow
   #Generation of plot
 
   if (Palette == "Greyscale") {
-  MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
-    labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
-    scale_fill_manual(values = c("slategrey", "black", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
-    labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
-    axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
-    theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
-    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
-    vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
-    vjust = 0.5, hjust = 0.5)) + theme(axis.text.y = element_text(colour = "black", size = 10, vjust = 0.5, hjust=1)) +
-    theme(legend.title = element_text(face = "bold", colour = "black", size = 12)) + theme(legend.text = element_text(colour = "black",
-    size = 10, vjust = 0.5, hjust=1)) + theme(legend.text.align = 0)
+    MutSigStack <- ggplot(data = Data, aes(x = Hugo_Symbol, y = Compartment)) + geom_tile(aes(fill = Odds_Ratio)) +
+      labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
+      scale_fill_manual(values = c("slategrey", "black", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
+                        labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
+                                                                                                                   axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
+      theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
+                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
+                                                                                                                                                                                                     vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
+                                                                                                                                                                                                                                                                vjust = 0.5, hjust = 0.5)) + theme(axis.text.y = element_text(colour = "black", size = 10, vjust = 0.5, hjust=1)) +
+      theme(legend.title = element_text(face = "bold", colour = "black", size = 12)) + theme(legend.text = element_text(colour = "black",
+                                                                                                                        size = 10, vjust = 0.5, hjust=1)) + theme(legend.text.align = 0)
   }
 
   if (Palette == "Blue") {
@@ -138,7 +138,7 @@ MutSigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("deepskyblue", "dodgerblue4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
-                                                                      axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
+                                                                                                                   axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
@@ -152,7 +152,7 @@ MutSigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("firebrick1", "firebrick4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
-                                                                      axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
+                                                                                                                   axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
@@ -166,7 +166,7 @@ MutSigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("darkolivegreen1", "darkgreen", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
-                                                                      axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
+                                                                                                                   axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
@@ -180,7 +180,7 @@ MutSigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow
       labs(title = "Mutational Signatures by Lymphocyte Compartment", subtitle = "", y = "Lymphocyte Compartment", x = "Gene", tag = "") +
       scale_fill_manual(values = c("deeppink", "deeppink4", "white"), name = "Odds_Ratio", limits = c("0.5", "1", "0"),
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
-                                                                      axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
+                                                                                                                   axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
                                                                                                                                     colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,

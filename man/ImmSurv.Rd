@@ -9,12 +9,17 @@ ImmSurv(
   Data,
   ID = "ID",
   Status = "Status",
+  Survival = "Survival",
+  Stage = "Stage",
+  SurvivalGroups = "Groups",
+  Marker = "Marker",
+  Genes,
+  Genez,
+  Axes = "Axes",
   Variable1 = "Variable1",
   Variable1Unit = "Variable1Unit",
   Variable2 = "Variable2",
-  Variable2Unit = "Variable2Unit",
-  Survival = "Survival",
-  Stage = "Stage"
+  Variable2Unit = "Variable2Unit"
 )
 }
 \description{
