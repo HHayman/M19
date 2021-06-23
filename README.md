@@ -4,7 +4,6 @@
 # M19
 
 <!-- badges: start -->
-
 <!-- badges: end -->
 
 Use this package to generate cut-offs using the maximal rank statistic
@@ -44,6 +43,8 @@ install_github("HHayman/M19")
 ![Console - When the vertical dash is flickering, the installation and
 loading is finished.](images/M19_Install.png)
 
+# rCut - Create cut-offs using the maximally selected rank statistic
+
 ## Preparing Data
 
 You need to carry out any exclusions etc in your data set - include the
@@ -57,7 +58,7 @@ Coding is based on those used in the Glasgow combined cohort, if your
 variables don’t match, use the ‘MISC’ option or let me know.
 
 CSS/OS should be coded as 0 = alive, 1 = CD, 2 = NCD. The function will
-split it into CSS and OS for you. DFS considers values \>0 to be an
+split it into CSS and OS for you. DFS considers values &gt;0 to be an
 event. RFS considers 1 to be a recurrence event. MISC considers 1 a
 miscellaneous event, everything else becomes 0. You can use this with
 anything, but code your data appropriately.
@@ -126,15 +127,15 @@ already exists.
 directory.](images/Data_Folder.png)
 
 Within the folder you will find your data; \* A pdf file named
-‘YourPlots’ containing a text print of your cut offs and associated
-test statistic, and all of your plots \* Individual png copies of each
-plot for use in presentations etc. These are labeled based on your
-variables and event outcomes \* Two csv files, ‘OriginalData’ and
-‘ModifiedData’. These are copies of your original data and the
-modified version from the function. Leave them alone, they are just for
-future reference if you need to know exactly what data you used \* A txt
-file called ‘Waste’. This is just a dump for anything that we don’t send
-to the console, thus avoiding clutter. Ignore it
+‘YourPlots’ containing a text print of your cut offs and associated test
+statistic, and all of your plots \* Individual png copies of each plot
+for use in presentations etc. These are labeled based on your variables
+and event outcomes \* Two csv files, ‘OriginalData’ and ‘ModifiedData’.
+These are copies of your original data and the modified version from the
+function. Leave them alone, they are just for future reference if you
+need to know exactly what data you used \* A txt file called ‘Waste’.
+This is just a dump for anything that we don’t send to the console, thus
+avoiding clutter. Ignore it
 
 ![Your data folder within your R working
 directory.](images/Data_Folder_Contents.png)

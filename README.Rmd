@@ -52,6 +52,9 @@ install_github("HHayman/M19")
 ```
 ![Console - When the vertical dash is flickering, the installation and loading is finished.](images/M19_Install.png)
 
+
+
+# rCut - Create cut-offs using the maximally selected rank statistic
 ## Preparing Data
 
 You need to carry out any exclusions etc in your data set - include the minimum amount of data possible. Your final data should include columns such as (example); an identifier (TMA_ID), survival time(s) (CSS_Time), corresponding survival status(s) (CSS_status), your variables (CD8_Tumour, CD8_Healthy). 
