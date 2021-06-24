@@ -30,7 +30,7 @@
 
 
 #Function
-SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = "0.5", ORhigh = "2", pval = "0.05", Palette = "Greyscale") {
+SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = "0.5", ORhigh = "2", pval = "0.05", Palette = "Greyscale", xlab = "10") {
 
 
 
@@ -146,7 +146,7 @@ SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = 
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                                                                    axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
-                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
+                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = xlab, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
                                                                                                                                                                                                                                                                 vjust = 0.5, hjust = 0.5)) + theme(axis.text.y = element_text(colour = "black", size = 10, vjust = 0.5, hjust=1)) +
       theme(legend.title = element_text(face = "bold", colour = "black", size = 12)) + theme(legend.text = element_text(colour = "black",
@@ -160,7 +160,7 @@ SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = 
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                                                                    axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
-                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
+                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = xlab, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
                                                                                                                                                                                                                                                                 vjust = 0.5, hjust = 0.5)) + theme(axis.text.y = element_text(colour = "black", size = 10, vjust = 0.5, hjust=1)) +
       theme(legend.title = element_text(face = "bold", colour = "black", size = 12)) + theme(legend.text = element_text(colour = "black",
@@ -174,7 +174,7 @@ SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = 
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                                                                    axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
-                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
+                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = xlab, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
                                                                                                                                                                                                                                                                 vjust = 0.5, hjust = 0.5)) + theme(axis.text.y = element_text(colour = "black", size = 10, vjust = 0.5, hjust=1)) +
       theme(legend.title = element_text(face = "bold", colour = "black", size = 12)) + theme(legend.text = element_text(colour = "black",
@@ -188,7 +188,7 @@ SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = 
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                                                                    axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
-                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
+                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = xlab, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
                                                                                                                                                                                                                                                                 vjust = 0.5, hjust = 0.5)) + theme(axis.text.y = element_text(colour = "black", size = 10, vjust = 0.5, hjust=1)) +
       theme(legend.title = element_text(face = "bold", colour = "black", size = 12)) + theme(legend.text = element_text(colour = "black",
@@ -202,7 +202,7 @@ SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = 
                         labels = c(paste("OR <", ORlow, sep = " "), paste("OR >", ORhigh, sep = " "), "")) + theme(panel.background = element_rect(fill = "white", colour = "white"),
                                                                                                                    axis.line = element_line(size = 0.5, linetype = "solid", colour = "white")) +
       theme(plot.title = element_text(face = "bold", colour = "black", size = 15, hjust = 0.5)) + theme(axis.title.x = element_text(face = "bold",
-                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = 10, angle = 90,
+                                                                                                                                    colour = "black", size = 12)) + theme(axis.text.x = element_text(colour = "black", size = xlab, angle = 90,
                                                                                                                                                                                                      vjust = 0.5, hjust=1)) + theme(axis.title.y = element_text(face = "bold", colour = "black", size = 12, angle = 90,
                                                                                                                                                                                                                                                                 vjust = 0.5, hjust = 0.5)) + theme(axis.text.y = element_text(colour = "black", size = 10, vjust = 0.5, hjust=1)) +
       theme(legend.title = element_text(face = "bold", colour = "black", size = 12)) + theme(legend.text = element_text(colour = "black",
