@@ -171,15 +171,19 @@ can then run the ‘SigStack’ function, as below;
 SigStack(Subdirectory = "SubDirectory", OutputFileName = "OutputFileName", ORlow = "0.5", ORhigh = "2", pval = "0.1", Palette = "Greyscale")
 ```
 
-*Subdirectory - A subdirectory of your working directory, in which you
-store your comparison files. *OutputFileName - A name for your final
-outpt file. *ORlow - The lower boundary for your OR. DMGs with an odds
-ratio between this value and your ORhigh will be excluded.Default value
-is 0.5. *ORhigh - The upper boundary for your OR. DMGs with an odds
-ratio between this value and your ORlow will be excluded.Default value
-is 2. *pval - Your chosen cut off for ‘statistical significance’.
-Default value is 0.05. *Palette - Choose your colour palette; greyscale,
-blue, red, pink, green. Default palette is greyscale.
+-   Subdirectory - A subdirectory of your working directory, in which
+    you store your comparison files.
+-   OutputFileName - A name for your final output file.
+-   ORlow - The lower boundary for your OR. DMGs with an odds ratio
+    between this value and your ORhigh will be excluded.Default value is
+    0.5.
+-   ORhigh - The upper boundary for your OR. DMGs with an odds ratio
+    between this value and your ORlow will be excluded.Default value
+    is 2.
+-   pval - Your chosen cut off for ‘statistical significance’. Default
+    value is 0.05.
+-   Palette - Choose your colour palette; greyscale, blue, red, pink,
+    green. Default palette is greyscale.
 
 ![A SigStack
 example.](https://github.com/HHayman/M19/raw/main/images/SigStack_Example.TIFF)
