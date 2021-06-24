@@ -213,8 +213,7 @@ SigStack <- function(Subdirectory = "", OutputFileName = "MutSigStack", ORlow = 
 
   #Printing of plot
   print(MutSigStack)
-  tiff(paste(OutputFileName, ".tiff", sep = ""))
-  # tiff(SigStackOutput.tiff)
+  tiff(paste(OutputFileName, ".tiff", sep = ""), width=1000, height=300)
   print(MutSigStack)
   dev.off()
 
